@@ -1,4 +1,5 @@
-from bottle import route, run, template
+from sys import argv
+from bottle import *
 
 @route("/")
 def index():
@@ -21,4 +22,4 @@ def aefisaga():
 def myndir():
     return "Herna eru myndir af mer"
 
-run(host='localhost', port=8080)
+bottle.run(host='0.0.0.0', port=argv[1])

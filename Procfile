@@ -1,1 +1,1 @@
-web: Verkefni_1.py
+web: ./Verkefni_1.py $PORT

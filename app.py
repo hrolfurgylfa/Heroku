@@ -1,3 +1,9 @@
+#TIL KENNARA!!!
+#       |
+#       |
+#       V
+#Til þess að finna Verkefni 1 þarf að fara á https://hrolfurgylfa.herokuapp.com/Verkefni_1 og til þess að finna verkefni tvö þarf að fara á https://hrolfurgylfa.herokuapp.com/Verkefni_2
+
 from sys import argv
 import bottle
 from bottle import *
@@ -83,4 +89,4 @@ def notFound(error):
 
 
 #bottle.run(host="localhost", port=8080, reloader=True, debug=True)
-bottle.run(host="0.0.0.0", port=argv[1])
+bottle.run(host='0.0.0.0', port=argv[1])

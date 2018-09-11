@@ -77,6 +77,41 @@ def page(id):
     else:
         return '<h2 style="color:red;text-align: center;">Þessi síða finnst ekki</h2>'
 
+@route("/Verkefni_3")
+def index_V3():
+    gogn = {"title": "Modular template", "content": "<h3>Halló Modular templates!</h3>", "footer": "Höfundur &copy; 2018 Hrólfur Gylfason"}
+    
+    return template("Aðaltemplates/base.tpl", gogn)
+
+# 1
+@route("/Verkefni_3/page1")
+def index1():
+    return template("Verkefni_3/page-1.tpl")
+
+# 2
+@route("/Verkefni_3/page2")
+def index2():
+    return template("Verkefni_3/page-2.tpl")
+
+# 3
+@route("/Verkefni_3/page3")
+def index3():
+    return template("Verkefni_3/page-3.tpl", nafn="Hrólfur")
+
+# 4
+@route("/Verkefni_3/page4")
+def index4():
+    dict1 = {"number": 123, "street": "MyStreet", "city": "MyCity"}
+
+    return template("Verkefni_3/page-4.tpl", dict1)
+
+# 5
+@route("/Verkefni_3/page5")
+def index5():
+    dict1 = {"title": "Vocaloids", "names": ["Miku", "Luka", "Len", "Rin"]}
+
+    return template("Verkefni_3/page-5.tpl", dict1)
+
 #Til þess að setja inn myndir
 @route('/Myndir/<skra:path>')
 def server_static(skra):
@@ -88,5 +123,5 @@ def notFound(error):
     return '<h2 style="color:red;text-align: center;">Þessi síða finnst ekki</h2>'
 
 
-#bottle.run(host="localhost", port=8080, reloader=True, debug=True)
-bottle.run(host='0.0.0.0', port=argv[1])
+bottle.run(host="localhost", port=8080, reloader=True, debug=True)
+#bottle.run(host='0.0.0.0', port=argv[1])

@@ -1,0 +1,20 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    max-width: 50em;
+    margin: 0 auto;
+    font-family: sans-serif;
+}
+
+.rod {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.haus,
+.fotur {
+    border: .2em solid #888;
+    border-radius: 5px;
+    text-align: center;
+}

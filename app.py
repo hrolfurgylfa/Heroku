@@ -77,12 +77,14 @@ def page(id):
     else:
         return '<h2 style="color:red;text-align: center;">Þessi síða finnst ekki</h2>'
 
+#Verkefni 3----------Verkefni 3----------Verkefni 3----------Verkefni 3----------Verkefni 3
 @route("/Verkefni_3")
 def index_V3():
     gogn = {"title": "Modular template", "content": "<h3>Halló Modular templates!</h3>", "footer": "Höfundur &copy; 2018 Hrólfur Gylfason"}
     
     return template("Aðaltemplates/base.tpl", gogn)
 
+# Liður A
 # 1
 @route("/Verkefni_3/page1")
 def index1():
@@ -112,7 +114,32 @@ def index5():
 
     return template("Verkefni_3/page-5.tpl", dict1)
 
+# Liður B
+@route("/Verkefni_3/Valmynd")
+def index_3_valmynd():
+    return """
+    <h1>Verkefni 3</h1>
+    <a href="/Verkefni_3/Lidur_A">Liður A</a>
+    <a href="/Verkefni_3/Lidur_B">Liður B</a>
+    """
+
+@route("/Verkefni_3/Lidur_A")
+def index_3_Lidur_A():
+    return template("Verkefni_3/tempA.tpl")
+
+@route("/Verkefni_3/reikna/<kt:int>")
+def index_3_reikna(kt):
+    return template("Verkefni_3/temp_kt.tpl", kt=kt)
+
+@route("/Verkefni_3/Lidur_B")
+def index_3_Lidur_B():
+    return template("Verkefni_3/index.tpl")
+
 #Til þess að setja inn myndir
+@route("/static/<skra:path>")
+def static_skrar(skra):
+    return static_file(skra, root="./static")
+
 @route('/Myndir/<skra:path>')
 def server_static(skra):
     return static_file(skra, root='Myndir')

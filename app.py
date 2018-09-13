@@ -51,18 +51,7 @@ def lidur_a():
     <a href="/Verkefni_2/sida/2">Síða 2</a>
     <a href="/Verkefni_2/sida/3">Síða 3</a>
     """
-#Liður B
-@route("/Verkefni_2/lidur_B")
-def lidur_b():
-    return """
-    <h2>Verkefni 2 - Liður A</h2>
-    <h3>Veldu uppáhalds staf</h3>
-    <img src="/Myndir/A.jpg">
-    <img src="Myndir/B.jpg">
-    <img src="Myndir/C.jpg">
-    <img src="Myndir/D.jpg">
-    """
-#Liður A
+
 @route("/Verkefni_2/sida/<id:int>")
 def page(id):
     if id == 1:
@@ -76,6 +65,44 @@ def page(id):
 
     else:
         return '<h2 style="color:red;text-align: center;">Þessi síða finnst ekki</h2>'
+
+#Liður B
+@route("/Verkefni_2/lidur_B")
+def lidur_b():
+    planeta = request.query.planeta or "False"
+    planeta = str(planeta)
+    print("1.",planeta)
+
+    if planeta == "Jord":
+        return """
+        <h3>Heima er alltaf best</h3>
+        """
+    
+    elif planeta == "Mars":
+        print("VIRKAR")
+        return """
+        <h3>Ætlar þú bara að flytja til mars með geimflaug frá Elon Musk?</h3>
+        """
+    
+    elif planeta == "Solin":
+        return """
+        <h3>Ertu svo heit/ur að sólin er drauma ferðalagið þitt?</h3>
+        """
+    
+    elif planeta == "Tunglid":
+        return """
+        <h3>Ætlar þú virkilega bara að frjósa á tunglinu?</h3>
+        """
+
+    else:
+        return """
+        <h2>Verkefni 2 - Liður B</h2>
+        <h3>Veldu uppáhalds Plánetu/Sól/Tungl</h3>
+        <a href="?planeta=Jord"><img src="/Myndir/Jord.jpg"></a>
+        <a href="?planeta=Mars"><img src="/Myndir/Mars.jpg"></a>
+        <a href="?planeta=Solin"><img src="/Myndir/Solin.jpg"></a>
+        <a href="?planeta=Tunglid"><img src="/Myndir/Tunglid.jpg"></a>
+        """
 
 #Verkefni 3----------Verkefni 3----------Verkefni 3----------Verkefni 3----------Verkefni 3
 @route("/Verkefni_3")

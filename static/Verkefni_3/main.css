@@ -17,4 +17,30 @@ body {
     border: .2em solid #888;
     border-radius: 5px;
     text-align: center;
+    margin-top: 1em;
+}
+.vinstri_section {
+    margin-right: .3em;
+}
+.haegri_section {
+    margin-left: .3em;
+}
+.nyjustu_frettir {
+    text-align: center;
+}
+.fretta_valmynd {
+    list-style: none;
+}
+.netfang_hofundar {
+    text-align: right;
+}
+.forsogu_mynd {
+    float: left;
+    width: 25em;
+    height: auto;
+    margin: 1em;
+}
+.forsidumynd {
+    width: 100%;
+    height: 100%;
 }

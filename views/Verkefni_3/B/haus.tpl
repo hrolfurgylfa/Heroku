@@ -1,3 +1,3 @@
 <header class="haus">
-    <h1>Hasarfréttir</h1>
+    <h1>Geimfréttir</h1>
 </header>

@@ -7,6 +7,8 @@
 from sys import argv
 import bottle
 from bottle import *
+import json
+import urllib.request, json
 
 #Föll
 def frettir():
@@ -197,6 +199,26 @@ def index_3_Lidur_B_Frett(frett):
         return '<h2 style="color:red;text-align: center;">Þessi síða finnst ekki</h2>'
     print(frettirListi[teljari])
     return template("Verkefni_3/B/frett.tpl", upplysingar = frettirListi[teljari])
+
+# Liður B
+@route("/Verkefni_4")
+def index_4():
+    return """
+    <h1>Verkefni 4</h1>
+    <a href="/Verkefni_4/Lidur_A">Local Json</a>
+    <a href="/Verkefni_4/Lidur_B">Json API</a>
+    """
+
+@route ("/Verkefni_4/Lidur_A")
+def Verkefni_4_A():
+    return template("Verkefni_4/index.tpl")
+
+@route ("/Verkefni_4/Lidur_B")
+def Verkefni_4_B():
+    with urllib.request.urlopen("http://apis.is/currency/lb") as url:
+        data = json.loads(url.read().decode())
+    return template("Verkefni_4/index2.tpl", gogn = data)
+
 
 # Til þess að setja inn myndir
 @route("/static/<skra:path>")

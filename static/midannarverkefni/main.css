@@ -29,3 +29,35 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
+
+
+/* =======================================
+   Tafla 1
+  ======================================== */
+  .tafla_1 {
+    border-collapse: collapse;
+    margin: 1em auto;
+}
+.tafla_1 thead tr th,
+.tafla_1 tbody tr td {
+    border: 1px solid black;
+    padding: 10px 15px;
+}
+
+@media screen and (max-width: 37.5em) {
+    .tafla_1 thead {
+        display: none;
+    }
+    .tafla_1 td {
+        display: block;
+    }
+    .tafla_1 tr {
+        display: block;
+        margin-bottom: .75em;
+    }
+    .tafla_1 td:before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+    }
+}

@@ -1,0 +1,31 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    max-width: 70em;
+    margin: 0 auto;
+    font-family: sans-serif;
+}
+.haus,
+.fotur {
+    border: .2em solid #888;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 1em;
+}
+.oll_fyrirtaeki {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    list-style-type: none;
+    margin: 1.5em;
+}
+.oll_fyrirtaeki a {
+    color: black;
+    text-decoration: none;
+}
+.odyrasta_bensin {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

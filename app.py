@@ -23,6 +23,65 @@ def frettir():
 
     return listi
 
+def make_link(strengur):
+    strengur = strengur.lower()
+    nyr_strengur = ""
+
+    for stafur in strengur:
+        if stafur == "í":
+            nyr_strengur += "i"
+        elif stafur == "é":
+            nyr_strengur += "e"
+        elif stafur == "á":
+            nyr_strengur += "a"
+        elif stafur == "ó" or stafur == "ö":
+            nyr_strengur += "o"
+        elif stafur == "ú":
+            nyr_strengur += "u"
+        elif stafur == "ý":
+            nyr_strengur += "y"
+        elif stafur == "ð":
+            nyr_strengur += "d"
+        elif stafur == "þ":
+            nyr_strengur += "th"
+        elif stafur == " ":
+            nyr_strengur += "_"
+        else:
+            nyr_strengur += stafur
+
+    return nyr_strengur
+
+def finnaOllFyrirtaeki():
+    with urllib.request.urlopen("http://apis.is/petrol") as url:
+        gogn = json.loads(url.read().decode())
+
+    oll_fyrirtaeki = []
+
+    for bensinstod in gogn["results"]:
+        if bensinstod["company"] not in oll_fyrirtaeki:
+            oll_fyrirtaeki.append(bensinstod["company"])
+
+    oll_fyrirtaeki.sort()
+
+    return oll_fyrirtaeki
+
+def bensin(bensin_gerd,gogn):
+    bensin_nafn = "Engin"
+    bensin_verd = 0
+
+    for bensinstod in gogn["results"]:
+        if bensin_nafn == "Engin":
+            bensin_nafn = bensinstod["company"]
+            bensin_verd = bensinstod[bensin_gerd]
+        else:
+            if bensinstod[bensin_gerd] is None:
+                pass
+            elif bensin_verd > bensinstod[bensin_gerd]:
+                bensin_nafn = bensinstod["company"]
+                bensin_verd = bensinstod[bensin_gerd]
+    
+    return (bensin_nafn,bensin_verd)
+
 #Verkefni 1----------Verkefni 1----------Verkefni 1----------Verkefni 1----------Verkefni 1
 @route("/Verkefni_1")
 def Verkefni_1():
@@ -219,6 +278,41 @@ def Verkefni_4_B():
         data = json.loads(url.read().decode())
     return template("Verkefni_4/index2.tpl", gogn = data)
 
+@route ("/midannarverkefni")
+def midannarverkefni_forsida():
+    oll_fyrirtaeki = finnaOllFyrirtaeki()
+
+    with urllib.request.urlopen("http://apis.is/petrol") as url:
+        gogn = json.loads(url.read().decode())
+
+    oll_fyrirtaeki_linkar = []
+
+    for fyrirtaeki in oll_fyrirtaeki:
+        oll_fyrirtaeki_linkar.append(make_link(fyrirtaeki))
+
+    bensin_listi = [bensin("bensin95",gogn),bensin("bensin95_discount",gogn),bensin("diesel",gogn),bensin("diesel_discount",gogn)]
+
+    return template("midannarverkefni/index.tpl", gogn = gogn, oll_fyrirtaeki = oll_fyrirtaeki, oll_fyrirtaeki_linkar = oll_fyrirtaeki_linkar, bensin_listi = bensin_listi)
+
+@route ("/midannarverkefni/bensinstod/<nafn:path>")
+def midannarverkefni_bensinstod(nafn):
+    oll_fyrirtaeki = finnaOllFyrirtaeki()
+
+    with urllib.request.urlopen("http://apis.is/petrol") as url:
+        gogn = json.loads(url.read().decode())
+
+    oll_fyrirtaeki_linkar = []
+
+    for fyrirtaeki in oll_fyrirtaeki:
+        oll_fyrirtaeki_linkar.append(make_link(fyrirtaeki))
+    
+    if nafn not in oll_fyrirtaeki_linkar:
+        return '<h2 style="color:red;text-align: center;">Þessi síða finnst ekki</h2>'
+
+    else:
+        nafn_bensinstodvar = oll_fyrirtaeki[oll_fyrirtaeki_linkar.index(nafn)]
+        return template("midannarverkefni/bensinstod.tpl", gogn = gogn, numer = nafn, bensinstod_nafn = nafn_bensinstodvar)
+
 
 # Til þess að setja inn myndir
 @route("/static/<skra:path>")
@@ -236,5 +330,5 @@ def notFound(error):
 
 
 
-#bottle.run(host="localhost", port=8080, reloader=True, debug=True)
-bottle.run(host='0.0.0.0', port=argv[1])
+bottle.run(host="localhost", port=8080, reloader=True, debug=True)
+#bottle.run(host='0.0.0.0', port=argv[1])

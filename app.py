@@ -294,7 +294,7 @@ def midannarverkefni_forsida():
 
     return template("midannarverkefni/index.tpl", gogn = gogn, oll_fyrirtaeki = oll_fyrirtaeki, oll_fyrirtaeki_linkar = oll_fyrirtaeki_linkar, bensin_listi = bensin_listi)
 
-@route ("/midannarverkefni/bensinstod/<nafn:path>")
+@route ("/midannarverkefni/<nafn:path>/")
 def midannarverkefni_bensinstod(nafn):
     oll_fyrirtaeki = finnaOllFyrirtaeki()
 
@@ -312,6 +312,25 @@ def midannarverkefni_bensinstod(nafn):
     else:
         nafn_bensinstodvar = oll_fyrirtaeki[oll_fyrirtaeki_linkar.index(nafn)]
         return template("midannarverkefni/bensinstod.tpl", gogn = gogn, numer = nafn, bensinstod_nafn = nafn_bensinstodvar)
+
+@route ("/midannarverkefni/<nafn:path>/stod_<numer:int>")
+def midannarverkefni_stod(nafn, numer):
+    oll_fyrirtaeki = finnaOllFyrirtaeki()
+
+    with urllib.request.urlopen("http://apis.is/petrol") as url:
+        gogn = json.loads(url.read().decode())
+
+    oll_fyrirtaeki_linkar = []
+
+    for fyrirtaeki in oll_fyrirtaeki:
+        oll_fyrirtaeki_linkar.append(make_link(fyrirtaeki))
+    
+    if nafn not in oll_fyrirtaeki_linkar:
+        return '<h2 style="color:red;text-align: center;">Þessi síða finnst ekki</h2>'
+
+    else:
+        nafn_bensinstodvar = oll_fyrirtaeki[oll_fyrirtaeki_linkar.index(nafn)]
+        return template("midannarverkefni/stod_kort.tpl", gogn = gogn, numer = nafn, bensinstod_nafn = nafn_bensinstodvar, stod_numer = int(numer))
 
 
 # Til þess að setja inn myndir

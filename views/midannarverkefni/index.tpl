@@ -3,7 +3,7 @@
 <section class="oll_fyrirtaeki">
 % tel = 0
 % for fyrirtaeki in oll_fyrirtaeki:
-    <a href="/midannarverkefni/bensinstod/{{ oll_fyrirtaeki_linkar[tel] }}">{{ fyrirtaeki }}</a>
+    <a href="/midannarverkefni/{{ oll_fyrirtaeki_linkar[tel] }}/">{{ fyrirtaeki }}</a>
 %   tel += 1
 % end
 </section>
@@ -17,5 +17,6 @@
         <p>Ódýrasta dísel með lykli er hjá: {{ bensin_listi[3][0] }} - Verð: {{ bensin_listi[3][1] }}kr.</p>
     </div>
 </section>
+<img width="100%" src="/static/midannarverkefni/gasoline-175122_1280.jpg">
 
 % include("midannarverkefni/fotur.tpl", sott = gogn["timestampPriceCheck"])

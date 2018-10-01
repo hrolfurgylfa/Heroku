@@ -61,7 +61,7 @@ body {
         font-weight: bold;
     }
 }
-#mapid {
+.map {
     width: 50%;
     height: 25em;
 }

@@ -61,7 +61,11 @@ body {
         font-weight: bold;
     }
 }
-.map {
-    width: 50%;
-    height: 25em;
+.kort {
+    width: 80%;
+    height: 30em;
+}
+.kort_og_fleira {
+    margin: auto;
+    text-align: center;
 }

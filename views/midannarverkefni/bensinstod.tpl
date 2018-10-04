@@ -1,7 +1,4 @@
 % include("midannarverkefni/haus.tpl", titill = bensinstod_nafn)
-<!-- AIzaSyDu6tALJE-febpmkmjP1s1vu5bqaIeggPY -->
-
-<!-- <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-123.812866210937504%2C63.51794993019517%2C-19.226074218750004%2C64.55552125118271&amp;layer=mapnik" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=9/64.0417/-21.5195">Skoða stærra kort</a></small> -->
 
 <table class="tafla_1">
     <tr>

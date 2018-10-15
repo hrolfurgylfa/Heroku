@@ -29,6 +29,18 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
+.odyrasta_bensin div p {
+    margin: .5em;
+}
+
+.kort {
+    width: 80%;
+    height: 30em;
+}
+.kort_og_fleira {
+    margin: auto;
+    text-align: center;
+}
 
 
 /* =======================================
@@ -61,11 +73,22 @@ body {
         font-weight: bold;
     }
 }
-.kort {
-    width: 80%;
-    height: 30em;
+
+/*  ========================================
+  Viðmið - breakpoints 37.5em = 600px + 
+  ========================================*/
+@media screen and (max-width: 37.5em) {  
+    .oll_fyrirtaeki{
+        flex-flow: column;
+        text-align: center;
+    }
+    .odyrasta_bensin {
+        text-align: center;
+    }
 }
-.kort_og_fleira {
-    margin: auto;
-    text-align: center;
+/* ========================================
+  Viðmið - breakpoints 48em = 760px +
+  ======================================== */
+@media screen and (min-width: 48em) {  
+    
 }

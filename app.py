@@ -332,6 +332,15 @@ def midannarverkefni_stod(nafn, numer):
         nafn_bensinstodvar = oll_fyrirtaeki[oll_fyrirtaeki_linkar.index(nafn)]
         return template("midannarverkefni/stod_kort.tpl", gogn = gogn, numer = nafn, bensinstod_nafn = nafn_bensinstodvar, stod_numer = int(numer))
 
+@route("/Verkefni_5")
+def Verkefni_5():
+    return template("Verkefni_5/index.tpl")
+
+@route("/Verkefni_5/nidurstada")
+def Verkefni_5_nidurstada():
+    return """
+    <h1>Virkar</h1>
+    """
 
 # Til þess að setja inn myndir
 @route("/static/<skra:path>")
@@ -343,11 +352,11 @@ def server_static(skra):
     return static_file(skra, root='Myndir')
 
 #404 ERROR síða----------404 ERROR síða----------404 ERROR síða----------404 ERROR síða----------404 ERROR síða
-@error (404)
+@error(404)
 def notFound(error):
     return '<h2 style="color:red;text-align: center;">Þessi síða finnst ekki</h2>'
 
-
-
-#bottle.run(host="localhost", port=8080, reloader=True, debug=True)
-bottle.run(host='0.0.0.0', port=argv[1])
+try:
+    bottle.run(host='0.0.0.0', port=argv[1])
+except IndexError:
+    bottle.run(host="localhost", port=8080, reloader=True, debug=True)

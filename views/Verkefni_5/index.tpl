@@ -10,7 +10,7 @@
 <body>
     <h1>Skráning á Námskeið</h1>
     <hr>
-    <form method="POST" action="/Verkefni_5/nidurstada">
+    <form class="skraning_a_namskeid" action="/Verkefni_5/nidurstada" method="post">
         <p>Fullt nafn:</p>
         <input name="fullt_nafn" type="text" /><br>
 
@@ -21,14 +21,12 @@
         
         <p>Götu nafn og númer:</p>
         <input name="gata" type="text" /><br>
+          
+        <p>Bær:</p>
+        <input name="baer" type="text" /><br>
 
-        <section class="stadsetning">            
-            <p>Bær:</p>
-            <input name="baer" type="text" /><br>
-
-            <p>Póstnúmer:</p>
-            <input name="postnumer" type="text" /><br>
-        </section>
+        <p>Póstnúmer:</p>
+        <input name="postnumer" type="text" /><br>
         
         <p>Tölvupóstur:</p>
         <input name="tolvupostur" type="email" />

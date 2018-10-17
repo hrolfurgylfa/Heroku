@@ -336,11 +336,74 @@ def midannarverkefni_stod(nafn, numer):
 def Verkefni_5():
     return template("Verkefni_5/index.tpl")
 
-@route("/Verkefni_5/nidurstada")
+@route("/Verkefni_5/nidurstada", method="POST")
 def Verkefni_5_nidurstada():
-    return """
-    <h1>Virkar</h1>
-    """
+    nafn = request.forms.fullt_nafn
+    namskeid = request.forms.getall("namskeid")
+    gata = request.forms.gata
+    baer = request.forms.baer
+    postnumer = request.forms.postnumer
+    tolvupostur = request.forms.tolvupostur
+    simanumer = request.forms.simanumer
+    matur = request.forms.matur
+
+    # Nafn
+    if " " not in nafn:
+        return '<h2 style="color:red;text-align: center;">Vinamlegast sláðu inn fullt nafn</h2>'
+
+    # Tölvupóstur
+    att = False
+    puntur = False
+    for stafur in tolvupostur:
+        if att is True:
+            if stafur == ".":
+                puntur = True
+        if stafur == "@":
+            att = True
+    if puntur is not True:
+        return '<h2 style="color:red;text-align: center;">Þetta er ekki alvöru tölvupóstfang</h2>'
+    
+    # Símanúmer
+    if len(simanumer) != 7 or simanumer[0] not in ["4","5","6","7","8"]:
+        return '<h2 style="color:red;text-align: center;">Þetta er ekki alvöru símanúmer</h2>'
+    for tala in simanumer:
+        if tala not in ["0","1","2","3","4","5","6","7","8","9"]:
+            return '<h2 style="color:red;text-align: center;">Þetta er ekki alvöru símanúmer</h2>'
+        
+    # Póstnúmer
+    postnumer_listi = []
+    skra = open("static/Verkefni_5/postnumer.csv","r")
+    for line in skra:
+        line.split(";")
+        postnumer_listi.append(line[0:3])
+    del postnumer_listi[0]
+
+    if postnumer not in postnumer_listi:
+        return '<h2 style="color:red;text-align: center;">Þetta er ekki alvöru póstnúmer</h2>'
+
+    # Gata
+    if " " not in gata:
+        return '<h2 style="color:red;text-align: center;">Það vantar götu númer</h2>'
+
+    # Verð
+    verdAnVSK = 0
+    if matur == "Já":
+        verdAnVSK += 1000
+    for nam in namskeid:
+        verdAnVSK += 5000
+
+    # Námskeið
+    oll_namskeid = ""
+    teljari = 0
+    for nam in namskeid:
+        if teljari == 0:
+            oll_namskeid += str(nam)
+            teljari += 1
+        else:
+            oll_namskeid += ", "+str(nam)
+            teljari += 1
+
+    return template("Verkefni_5/nidurstada.tpl", nafn=nafn, namskeid=namskeid, gata=gata, baer=baer, postnumer=postnumer, tolvupostur=tolvupostur, simanumer=simanumer, matur=matur, oll_namskeid=oll_namskeid, verdAnVSK=verdAnVSK)
 
 # Til þess að setja inn myndir
 @route("/static/<skra:path>")

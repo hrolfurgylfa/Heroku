@@ -349,7 +349,7 @@ def Verkefni_5_nidurstada():
 
     # Nafn
     if " " not in nafn:
-        return '<h2 style="color:red;text-align: center;">Vinamlegast sláðu inn fullt nafn</h2>'
+        return template("Verkefni_5/error.tpl", t="Vinamlegast sláðu inn fullt nafn")
 
     # Tölvupóstur
     att = False
@@ -361,14 +361,14 @@ def Verkefni_5_nidurstada():
         if stafur == "@":
             att = True
     if puntur is not True:
-        return '<h2 style="color:red;text-align: center;">Þetta er ekki alvöru tölvupóstfang</h2>'
+        return template("Verkefni_5/error.tpl", t="Þetta er ekki alvöru tölvupóstfang")
     
     # Símanúmer
     if len(simanumer) != 7 or simanumer[0] not in ["4","5","6","7","8"]:
-        return '<h2 style="color:red;text-align: center;">Þetta er ekki alvöru símanúmer</h2>'
+        return template("Verkefni_5/error.tpl", t="Þetta er ekki alvöru símanúmer")
     for tala in simanumer:
         if tala not in ["0","1","2","3","4","5","6","7","8","9"]:
-            return '<h2 style="color:red;text-align: center;">Þetta er ekki alvöru símanúmer</h2>'
+            return template("Verkefni_5/error.tpl", t="Þetta er ekki alvöru símanúmer")
         
     # Póstnúmer
     postnumer_listi = []
@@ -379,11 +379,11 @@ def Verkefni_5_nidurstada():
     del postnumer_listi[0]
 
     if postnumer not in postnumer_listi:
-        return '<h2 style="color:red;text-align: center;">Þetta er ekki alvöru póstnúmer</h2>'
+        return template("Verkefni_5/error.tpl", t="Þetta er ekki alvöru póstnúmer")
 
     # Gata
     if " " not in gata:
-        return '<h2 style="color:red;text-align: center;">Það vantar götu númer</h2>'
+        return template("Verkefni_5/error.tpl", t="Það vantar götu númer")
 
     # Verð
     verdAnVSK = 0

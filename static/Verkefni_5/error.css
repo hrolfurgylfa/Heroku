@@ -1,0 +1,15 @@
+body {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+h2 {
+    color:red;
+}
+a {
+    text-decoration: none;
+    /* border: 1px solid blue; */
+    background-color: blue;
+    color: white;
+    border-radius: 1em;
+    padding: .4em;
+}

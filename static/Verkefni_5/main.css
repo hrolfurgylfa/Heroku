@@ -1,5 +1,108 @@
-.skraning_a_namskeid{
+body {
+    max-width: 50em;
+    margin: 0 auto;
+    font-family: sans-serif;
+}
+
+/* Grid Area */
+.namskeid1 {grid-area: namskeid1;}
+.namskeid2 {grid-area: namskeid2;}
+
+.gata {grid-area: gata;}
+.baer {grid-area: baer;}
+.postnumer {grid-area: postnumer;}
+
+.tolvupostur {grid-area: tolvupostur;}
+.simanumer {grid-area: simanumer;}
+
+
+/* Stílar */
+
+.titill {
+    text-align: center;
+}
+.skraning_a_namskeid {
+    text-align: center;
+    margin-top: 2em;
+    border: 1px solid black;
+    border-radius: 1em;
+}
+.skraning_a_namskeid input {
+    margin-bottom: 1em;
+}
+.namskeid {
+    display: grid;
+    grid-template-areas: "namskeid1 namskeid2";
+    grid-template-columns: 1fr 1fr;
+}
+.heimilisfang {
+    display: grid;
+    grid-template-areas: "gata baer postnumer";
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.samskipti {
+    display: grid;
+    grid-template-areas: "tolvupostur simanumer";
+    grid-template-columns: 1fr 1fr;
+}
+.heimilisfang div input {
+    width: 85%;
+}
+.samskipti div input {
+    width: 85%;
+}
+
+/* .skraning_a_namskeid{
     width: 50em;
     margin: 1em auto;
     text-align: center
-}
+} */
+
+
+/*  ========================================
+  Viðmið - breakpoints 30em = 480px + 
+  ========================================*/
+  @media screen and (max-width: 30em) {
+    .samskipti {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "tolvupostur"
+        "simanumer";
+    }
+    .namskeid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "namskeid1"
+        "namskeid2";
+    }
+  }
+  /*  ========================================
+    Viðmið - breakpoints 37.5em = 600px + 
+    ========================================*/
+  @media screen and (max-width: 37.5em) {  
+    .heimilisfang {
+        display: grid;
+        grid-template-areas: 
+        "gata gata"
+        "baer postnumer";
+        grid-template-columns: 1fr 1fr;
+    }
+  }
+  /* ========================================
+    Viðmið - breakpoints 48em = 760px +
+    ======================================== */
+  @media screen and (max-width: 48em) {  
+
+  }
+  /* ========================================
+    Viðmið - breakpoints 60em = 960px +
+    ======================================== */
+  @media screen and (max-width: 60em) {
+
+  }
+  /* ========================================
+    Viðmið - breakpoints 80em = 1600px +
+    ======================================== */
+  @media screen and (max-width: 80em) {
+
+  }

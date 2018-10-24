@@ -6,4 +6,5 @@
     <li><a href="/Verkefni_4">Verkefni 4</a></li>
     <li><a href="/midannarverkefni">Miðannarverkefni</a></li>
     <li><a href="/Verkefni_5">Verkefni 5</a></li>
+    <li><a href="/Verkefni_6">Verkefni 6</a></li>
 </ul>

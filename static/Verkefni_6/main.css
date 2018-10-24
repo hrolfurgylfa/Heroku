@@ -1,0 +1,20 @@
+body {
+    max-width: 50em;
+    margin: 0 auto;
+    font-family: sans-serif;
+}
+
+/* Stílar */
+
+.titill {
+    text-align: center;
+}
+.innskraning {
+    text-align: center;
+    margin-top: 2em;
+    border: 1px solid black;
+    border-radius: 1em;
+}
+.innskraning input {
+    margin-bottom: 1em;
+}

@@ -82,7 +82,28 @@ def bensin(bensin_gerd,gogn):
     
     return (bensin_nafn,bensin_verd)
 
-#Verkefni 1----------Verkefni 1----------Verkefni 1----------Verkefni 1----------Verkefni 1
+def saekjaNotendur(skraarnafn):# Sækja password skrá
+    oll_password = []
+    password2 = []
+    skra = open(skraarnafn,"r")
+
+    for line in skra:
+        lina = line.split(";")
+        password2.append(lina)
+    
+    for listi in password2:
+        listi2 = []
+        for hlutur in listi:
+            print("Hlutur:",hlutur)
+            if hlutur != "\n":
+                listi2.append(hlutur)
+        oll_password.append(listi2)
+
+    return oll_password
+
+#  ========================================
+#  Verkefni 1
+#  ========================================
 @route("/Verkefni_1")
 def Verkefni_1():
     return """
@@ -112,7 +133,9 @@ def aefisaga():
 def myndir():
     return "Herna eru myndir af mer"
 
-#Verkefni 2----------Verkefni 2----------Verkefni 2----------Verkefni 2----------Verkefni 2
+#  ========================================
+#  Verkefni 2
+#  ========================================
 @route("/Verkefni_2")
 def Verkefni_2():
     return """
@@ -182,7 +205,9 @@ def lidur_b():
         <a href="?planeta=Tunglid"><img src="/Myndir/Tunglid.jpg"></a>
         """
 
-#Verkefni 3----------Verkefni 3----------Verkefni 3----------Verkefni 3----------Verkefni 3
+#  ========================================
+#  Verkefni 3
+#  ========================================
 @route("/Verkefni_3")
 def index_V3():
     gogn = {"title": "Modular template", "content": "<h3>Halló Modular templates!</h3>", "footer": "Höfundur &copy; 2018 Hrólfur Gylfason"}
@@ -264,7 +289,9 @@ def index_3_Lidur_B_Frett(frett):
     print(frettirListi[teljari])
     return template("Verkefni_3/B/frett.tpl", upplysingar = frettirListi[teljari])
 
-# Liður B
+#  ========================================
+#  Verkefni 4
+#  ========================================
 @route("/Verkefni_4")
 def index_4():
     return """
@@ -283,6 +310,9 @@ def Verkefni_4_B():
         data = json.loads(url.read().decode())
     return template("Verkefni_4/index2.tpl", gogn = data)
 
+#  ========================================
+#  Miðannarverkefni
+#  ========================================
 @route ("/midannarverkefni")
 def midannarverkefni_forsida():
     oll_fyrirtaeki = finnaOllFyrirtaeki()
@@ -337,6 +367,9 @@ def midannarverkefni_stod(nafn, numer):
         nafn_bensinstodvar = oll_fyrirtaeki[oll_fyrirtaeki_linkar.index(nafn)]
         return template("midannarverkefni/stod_kort.tpl", gogn = gogn, numer = nafn, bensinstod_nafn = nafn_bensinstodvar, stod_numer = int(numer))
 
+#  ========================================
+#  Verkefni 5
+#  ========================================
 @route("/Verkefni_5")
 def Verkefni_5():
     return template("Verkefni_5/index.tpl")
@@ -410,6 +443,43 @@ def Verkefni_5_nidurstada():
 
     return template("Verkefni_5/nidurstada.tpl", nafn=nafn, namskeid=namskeid, gata=gata, baer=baer, postnumer=postnumer, tolvupostur=tolvupostur, simanumer=simanumer, matur=matur, oll_namskeid=oll_namskeid, verdAnVSK=verdAnVSK)
 
+#  ========================================
+#  Verkefni 6
+#  ========================================
+@route("/Verkefni_6")
+def Verkefni_6():
+    return template("Verkefni_6/index.tpl")
+
+@route("/Verkefni_6/innskraning", method="POST")
+def Verkefni_6_innskraning():
+
+    username = request.forms.username
+    password = request.forms.password
+    
+    oll_password = saekjaNotendur("static/Verkefni_6/password.txt")
+    
+    notandi_fundinn = False
+    notandi_rett_adgangsord = False
+    for notandi in oll_password:
+        if notandi[0] == username:
+            notandi_fundinn = True
+            if notandi[1] == password:
+                notandi_rett_adgangsord = True
+                user = notandi[0]
+                user_rettir = notandi[2]
+    
+    if notandi_rett_adgangsord is True:
+        return template("Verkefni_6/error.tpl", t = "Velkomin/n "+str(user))
+    elif notandi_fundinn is True:
+        return template("Verkefni_6/error.tpl", t = "Rangt notendanafn eða lykilorð")
+    else:
+        return template("Verkefni_6/error.tpl", t = "Rangt notendanafn eða lykilorð")
+            
+    print("Aðgangsorð:",password)
+
+#  ========================================
+#  Annað
+#  ========================================
 # Til þess að setja inn myndir
 @route("/static/<skra:path>")
 def static_skrar(skra):

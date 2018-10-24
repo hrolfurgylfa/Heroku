@@ -10,6 +10,6 @@
 </head>
 <body>
     <h2>{{ t }}</h2>
-    <a href="/Verkefni_5">Fara til baka</a>
+    <a href="/Verkefni_6">Fara til baka</a>
 </body>
 </html>

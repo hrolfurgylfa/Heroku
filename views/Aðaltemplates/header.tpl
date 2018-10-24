@@ -11,6 +11,3 @@
     <nav>
         % include("Aðaltemplates/menu.tpl")
     </nav>
-
-</body>
-</html>

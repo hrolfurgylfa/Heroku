@@ -92,6 +92,11 @@ def Verkefni_1():
     <a href="/myndir">Myndir af mer</a>
 """
 
+#Forsíða
+@route("/")
+def forsida():
+    return template("forsida/forsida.tpl")
+
 #Um
 @route("/Verkefni_1/um")
 def um():

@@ -14,7 +14,6 @@
     <table class="tafla_1">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Notendanafn</th>
                 <th>Aðgangsorð</th>
                 <th>Réttindi</th>
@@ -26,7 +25,6 @@
         <tbody>
             % for n in o:
                 <tr>
-                    <td data-label="ID">{{ n[3] }}</td>
                     <td data-label="Notendanafn">{{ n[0] }}</td>
                     <td data-label="Aðgangsorð">{{ n[1] }}</td>
                     % if n[2] == "0":

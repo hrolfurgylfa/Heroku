@@ -508,7 +508,7 @@ def Verkefni_6_innskraning():
     if notandi_fundinn is True and notandi_rett_adgangsord is True and user_rettir is 1:
         return redirect("/Verkefni_6")
     elif notandi_fundinn is True and notandi_rett_adgangsord is True:
-        return template("Verkefni_6/error.tpl", t = "Þessi notandi er ekki með næg réttindi")
+        return template("Verkefni_6/error.tpl", t = "Þessi notandi er ekki með næg réttindi", u = notandi[0])
     elif notandi_fundinn is True and notandi_rett_adgangsord is False:
         return template("Verkefni_6/error.tpl", t = "Rangt notendanafn eða lykilorð")
     else:

@@ -1,2 +1,4 @@
-TIL KENNARA!!!<br>
-Til þess að finna Verkefni 1 þarf að fara á https://hrolfurgylfa.herokuapp.com/Verkefni_1 og til þess að finna verkefni tvö þarf að fara á https://hrolfurgylfa.herokuapp.com/Verkefni_2
+#This is my website for school created with Python Bottle. Find it here: https://hrolfurgylfa.herokuapp.com
+<br>
+<br>
+######P.S. I know I left some private keys/secrets in the repository but there is not much anyone can do as any user. 

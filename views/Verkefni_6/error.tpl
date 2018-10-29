@@ -10,6 +10,10 @@
 </head>
 <body>
     <h2>{{ t }}</h2>
-    <a href="/Verkefni_6">Fara til baka</a>
+    % try: 
+        <a href="/Verkefni_6/utskra?u={{ u }}">Fara til baka</a>
+    % except NameError:
+        <a href="/Verkefni_6">Fara til baka</a>
+    % end
 </body>
 </html>

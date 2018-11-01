@@ -14,15 +14,16 @@
         % for tel in range(1,7):
         <section class="fot_{{ tel }}">
             <section class="fot2">
-                <a href="/Verkefni_6/bud?i={{ tel }}">
+                <a class="fot_linkur" href="/Verkefni_6/bud?i={{ tel }}">
                     <img class="mynd_1" src="/static/Verkefni_6/fot/{{ tel }}.jpg">
+                    
+                    <h3 class="fyrirsogn">
+                        {{ allar_vorur[0][str(tel)] }}
+                        <span class="verd">{{ allar_vorur[2][str(tel)] }}kr.</span>
+                    </h3>
+                    
+                    <p class="lysing">{{ allar_vorur[1][str(tel)] }}</p>
                 </a>
-                <h3 class="fyrirsogn">
-                    {{ allar_vorur[0][str(tel)] }}
-                    <span class="verd">{{ allar_vorur[2][str(tel)] }}kr.</span>
-                </h3>
-                
-                <p class="lysing">{{ allar_vorur[1][str(tel)] }}</p>
             </section>
         </section>
         % end

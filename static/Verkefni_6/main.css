@@ -4,17 +4,25 @@
 .fot_4,
 .fot_5,
 .fot_6 {
-    max-width: 20em;
+    max-width: 25em;
     height: auto;
     margin: .5em auto;
 }
 .fot2 {
-    padding: 0 .5em;
+    padding: .75em .75em;
+    background-color: lightblue;
+    border-radius: 1em;
+}
+.fot_linkur {
+    text-decoration: none;
+    color: black;
 }
 .mynd_1 {
     width: 100%;
+    border-radius: 1em;
 }
 .oll_fot {
+    display: grid;
     margin: auto;
 }
 
@@ -30,21 +38,50 @@
 .oll_fot {
     display: grid;
     grid-template-areas: 
-    "fot_1 fot_2 fot_3"
-    "fot_4 fot_5 fot_6";
+    "fot_1"
+    "fot_2"
+    "fot_3"
+    "fot_4"
+    "fot_5"
+    "fot_6";
 }
+/* .oll_fot {
+    display: grid;
+    grid-template-areas: 
+    "fot_1 fot_2 fot_3 fot_4"
+    "fot_5 fot_6";
+} */
 .verd {
     float: right;
 }
 /*======================================
- Viðmið - breakpoints 60em = 960px +
+ Viðmið - breakpoints 37.5em = 600px +
 ======================================== */
-@media screen and (max-width: 60em) {
+@media screen and (min-width: 37.5em) {  
     .oll_fot {
-        display: grid;
         grid-template-areas: 
         "fot_1 fot_2"
         "fot_3 fot_4"
+        "fot_5 fot_6";
+    }
+}
+/*======================================
+ Viðmið - breakpoints 60em = 960px
+======================================== */
+@media screen and (min-width: 60em) {
+    .oll_fot {
+        grid-template-areas: 
+        "fot_1 fot_2 fot_3"
+        "fot_4 fot_5 fot_6";
+    }
+}
+/*======================================
+ Viðmið - breakpoints 80em = 1600px
+======================================== */
+@media screen and (min-width: 80em) {
+    .oll_fot {
+        grid-template-areas: 
+        "fot_1 fot_2 fot_3 fot_4"
         "fot_5 fot_6";
     }
 }

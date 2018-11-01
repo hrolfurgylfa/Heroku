@@ -11,6 +11,8 @@ from sys import argv
 import bottle
 from bottle import *
 
+from beaker.middleware import SessionMiddleware
+
 skraarnafn = "static/Verkefni_6_gamalt/password.txt"
 
 #Föll
@@ -552,8 +554,57 @@ def Verkefni_6_gamalt_breyta_notendanafni():
 #  ========================================
 #  Verkefni 6
 #  ========================================
-@route("/Verkefni_6")
+session_opts = {
+    'session.type': 'file',
+    'session.cookie_expires': 86400,
+    'session.data_dir': './data',
+    'session.auto': True
+}
+app = SessionMiddleware(bottle.app(), session_opts)
 
+@route("/Verkefni_6")
+def Verkefni_6():
+    hlutur = {
+        "1": "Hattur",
+        "2": "Bolur",
+        "3": "Jakki",
+        "4": "Buxur",
+        "5": "Skór",
+        "6": "Peysa",
+        "tel": "Villa"
+    }
+    lysing = {
+        "1": "Stór hattur með glansandi keðju á",
+        "2": "Venjulegur hvítur bolur",
+        "3": "Grár fínn hneptur jakki",
+        "4": "Rifnar gallabuxur með fullt af perlum á",
+        "5": "Rauðbleikir kvenna íþróttaskrór",
+        "6": "Prjónuð peysa með krúttlegu dýri framaná"
+    }
+    verd = {
+        "1": 3000,
+        "2": 2000,
+        "3": 10000,
+        "4": 7000,
+        "5": 12000,
+        "6": 9000
+    }
+    
+    allar_vorur = (hlutur, lysing, verd)
+    
+    session = bottle.request.environ.get('beaker.session')
+    session['auto'] = session.get('test',0) + 1
+    print("AUTO:",session["auto"])
+    return template("Verkefni_6/index.tpl", allar_vorur=allar_vorur)
+    # session = bottle.request.environ.get('beaker.session')
+    # print("S er",session)
+    # session['test'] = session.get('test',0) + 1
+    # session.save()
+    # return 'Test counter: %d' % session['test']
+
+@route("/Verkefni_6/bud")
+def Verkefni_6_bud():
+    pass
 
 #  ========================================
 #  Annað
@@ -573,6 +624,6 @@ def notFound(error):
     return '<h2 style="color:red;text-align: center;">Þessi síða finnst ekki</h2>'
 
 try:
-    bottle.run(host='0.0.0.0', port=argv[1])
+    bottle.run(host='0.0.0.0', port=argv[1], app=app)
 except IndexError:
-    bottle.run(host="localhost", port=8080, reloader=True, debug=True)
+    bottle.run(host="localhost", port=8080, reloader=True, debug=True, app=app)

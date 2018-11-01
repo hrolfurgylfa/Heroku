@@ -3,20 +3,29 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Verkefni 6</title>
+    <title>Netbúð</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="/static/Verkefni_6/main.css" />
 </head>
 <body>
-    <h1>Innskráning</h1>
-    <h5>EKKI nota aðgangsorð að öðrum síðum hérna vegna þess að það geta allir séð öll aðgangsorð og notandanöfn <a href="/static/Verkefni_6/password.txt">hérna</a></h5>
-    <form class="innskraning" action="/Verkefni_6/innskraning" method="POST">
-        <p>Notendanafn:</p>
-        <input name="username" type="text" required><br>
-        <p>Aðgangsorð:</p>
-        <input name="password" type="password" required><br>
-        
-        <input type="submit" value="Skrá inn" />
-    </form>
+    <h1>Netbúð</h1>
+    <hr>
+    <div class="oll_fot">
+        % for tel in range(1,7):
+        <section class="fot_{{ tel }}">
+            <section class="fot2">
+                <a href="/Verkefni_6/bud?i={{ tel }}">
+                    <img class="mynd_1" src="/static/Verkefni_6/fot/{{ tel }}.jpg">
+                </a>
+                <h3 class="fyrirsogn">
+                    {{ allar_vorur[0][str(tel)] }}
+                    <span class="verd">{{ allar_vorur[2][str(tel)] }}kr.</span>
+                </h3>
+                
+                <p class="lysing">{{ allar_vorur[1][str(tel)] }}</p>
+            </section>
+        </section>
+        % end
+    </div>
 </body>
 </html>

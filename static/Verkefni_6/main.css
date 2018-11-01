@@ -1,0 +1,50 @@
+.fot_1,
+.fot_2,
+.fot_3,
+.fot_4,
+.fot_5,
+.fot_6 {
+    max-width: 20em;
+    height: auto;
+    margin: .5em auto;
+}
+.fot2 {
+    padding: 0 .5em;
+}
+.mynd_1 {
+    width: 100%;
+}
+.oll_fot {
+    margin: auto;
+}
+
+/* Grid Area */
+.fot_1 {grid-area: fot_1;}
+.fot_2 {grid-area: fot_2;}
+.fot_3 {grid-area: fot_3;}
+.fot_4 {grid-area: fot_4;}
+.fot_5 {grid-area: fot_5;}
+.fot_6 {grid-area: fot_6;}
+
+/* Grid Template Areas */
+.oll_fot {
+    display: grid;
+    grid-template-areas: 
+    "fot_1 fot_2 fot_3"
+    "fot_4 fot_5 fot_6";
+}
+.verd {
+    float: right;
+}
+/*======================================
+ Viðmið - breakpoints 60em = 960px +
+======================================== */
+@media screen and (max-width: 60em) {
+    .oll_fot {
+        display: grid;
+        grid-template-areas: 
+        "fot_1 fot_2"
+        "fot_3 fot_4"
+        "fot_5 fot_6";
+    }
+}

@@ -124,6 +124,45 @@ def eydaNotenda(username):
     
     skrifaListaISkra(allir_notendur_2)
 
+def buaTilHluti():
+    hlutur = {
+        "1": "Hattur",
+        "2": "Bolur",
+        "3": "Jakki",
+        "4": "Buxur",
+        "5": "Skór",
+        "6": "Peysa"
+    }
+    lysing = {
+        "1": "Stór hattur með glansandi keðju á",
+        "2": "Venjulegur hvítur bolur",
+        "3": "Grár fínn hneptur jakki",
+        "4": "Rifnar gallabuxur með fullt af perlum á",
+        "5": "Rauðbleikir kvenna íþróttaskrór",
+        "6": "Prjónuð peysa með krúttlegu dýri framaná"
+    }
+    verd = {
+        "1": 3000,
+        "2": 2000,
+        "3": 10000,
+        "4": 7000,
+        "5": 12000,
+        "6": 9000
+    }
+    return (hlutur, lysing, verd)
+
+def baetaVid0(tala):
+    if tala < 0:
+        return str(tala)
+    elif tala < 10:
+        return "0"+str(tala)
+    elif tala < 100:
+        return "00"+str(tala)
+    elif tala < 1000:
+        return "000"+str(tala)
+    else:
+        return str(tala)
+
 #  ========================================
 #  Verkefni 1
 #  ========================================
@@ -564,47 +603,53 @@ app = SessionMiddleware(bottle.app(), session_opts)
 
 @route("/Verkefni_6")
 def Verkefni_6():
-    hlutur = {
-        "1": "Hattur",
-        "2": "Bolur",
-        "3": "Jakki",
-        "4": "Buxur",
-        "5": "Skór",
-        "6": "Peysa",
-        "tel": "Villa"
-    }
-    lysing = {
-        "1": "Stór hattur með glansandi keðju á",
-        "2": "Venjulegur hvítur bolur",
-        "3": "Grár fínn hneptur jakki",
-        "4": "Rifnar gallabuxur með fullt af perlum á",
-        "5": "Rauðbleikir kvenna íþróttaskrór",
-        "6": "Prjónuð peysa með krúttlegu dýri framaná"
-    }
-    verd = {
-        "1": 3000,
-        "2": 2000,
-        "3": 10000,
-        "4": 7000,
-        "5": 12000,
-        "6": 9000
-    }
-    
-    allar_vorur = (hlutur, lysing, verd)
-    
+    allar_vorur = buaTilHluti()
+
     session = bottle.request.environ.get('beaker.session')
-    session['auto'] = session.get('test',0) + 1
-    print("AUTO:",session["auto"])
-    return template("Verkefni_6/index.tpl", allar_vorur=allar_vorur)
+    session["fot"] = session.get("fot","")
+    print(session["fot"])
+
+    allt_i_korfu = []
+    tel = 0
+    for x in range(int(len(session["fot"])-1/2)):
+        strengur = session["fot"][tel:tel+1]
+        tel += 2
+        allt_i_korfu.append(strengur)
+
+    print("Allt í körfu:",allt_i_korfu)
+
+    return template("Verkefni_6/index.tpl", allar_vorur=allar_vorur, allt_i_korfu = allt_i_korfu)
     # session = bottle.request.environ.get('beaker.session')
     # print("S er",session)
     # session['test'] = session.get('test',0) + 1
     # session.save()
     # return 'Test counter: %d' % session['test']
 
-@route("/Verkefni_6/bud")
-def Verkefni_6_bud():
-    pass
+@route("/Verkefni_6/vara")
+def Verkefni_6_vara():
+    vara = request.query.i
+    allar_vorur = buaTilHluti()
+
+    session = bottle.request.environ.get('beaker.session')
+    session["fot"] = session.get("fot","")
+    print(session["fot"])
+
+    allt_i_korfu = []
+    tel = 0
+    for x in range(int(len(session["fot"])-1/2)):
+        strengur = session["fot"][tel:tel+1]
+        tel += 2
+        allt_i_korfu.append(strengur)
+
+    print("Allt í körfu:",allt_i_korfu)
+
+    return template("Verkefni_6/bud.tpl", allar_vorur=allar_vorur, allt_i_korfu = allt_i_korfu, vara = vara)
+@route("/Verkefni_6/kaupa_voru")
+def Verkefni_6_kaupa_voru():
+    vara = request.query.i
+    vara = baetaVid0(vara)
+    session = bottle.request.environ.get('beaker.session')
+    session["fot"] = session.get("fot","")
 
 #  ========================================
 #  Annað

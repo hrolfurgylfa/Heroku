@@ -628,11 +628,6 @@ def Verkefni_6():
     print("Allt í körfu:",allt_i_korfu)
 
     return template("Verkefni_6/index.tpl", allar_vorur=allar_vorur, allt_i_korfu = allt_i_korfu)
-    # session = bottle.request.environ.get('beaker.session')
-    # print("S er",session)
-    # session['test'] = session.get('test',0) + 1
-    # session.save()
-    # return 'Test counter: %d' % session['test']
 
 @route("/Verkefni_6/vara")
 def Verkefni_6_vara():

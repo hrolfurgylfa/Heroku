@@ -152,6 +152,7 @@ def buaTilHluti():
     return (hlutur, lysing, verd)
 
 def baetaVid0(tala):
+    tala = int(tala)
     if tala < 0:
         return str(tala)
     elif tala < 10:
@@ -162,6 +163,19 @@ def baetaVid0(tala):
         return "000"+str(tala)
     else:
         return str(tala)
+
+def saekjaAlltIKorfu(breyta):
+    allt_i_korfu = []
+    tala_komin = False
+    for tala in breyta["fot"]:
+        if tala_komin is False:
+            tala_komin = True
+            tala1 = tala
+        else:
+            tala_komin = False
+            allt_i_korfu.append(str(tala1)+str(tala))
+    
+    return allt_i_korfu
 
 #  ========================================
 #  Verkefni 1
@@ -609,12 +623,7 @@ def Verkefni_6():
     session["fot"] = session.get("fot","")
     print(session["fot"])
 
-    allt_i_korfu = []
-    tel = 0
-    for x in range(int(len(session["fot"])-1/2)):
-        strengur = session["fot"][tel:tel+1]
-        tel += 2
-        allt_i_korfu.append(strengur)
+    allt_i_korfu = saekjaAlltIKorfu(session)
 
     print("Allt í körfu:",allt_i_korfu)
 
@@ -634,22 +643,23 @@ def Verkefni_6_vara():
     session["fot"] = session.get("fot","")
     print(session["fot"])
 
-    allt_i_korfu = []
-    tel = 0
-    for x in range(int(len(session["fot"])-1/2)):
-        strengur = session["fot"][tel:tel+1]
-        tel += 2
-        allt_i_korfu.append(strengur)
+    allt_i_korfu = saekjaAlltIKorfu(session)
 
     print("Allt í körfu:",allt_i_korfu)
 
     return template("Verkefni_6/bud.tpl", allar_vorur=allar_vorur, allt_i_korfu = allt_i_korfu, vara = vara)
+
 @route("/Verkefni_6/kaupa_voru")
 def Verkefni_6_kaupa_voru():
     vara = request.query.i
     vara = baetaVid0(vara)
     session = bottle.request.environ.get('beaker.session')
     session["fot"] = session.get("fot","")
+    print("Vara:",vara)
+    session["fot"] += vara
+    print('session["fot"] =',session["fot"])
+    session.save()
+    return redirect("/Verkefni_6")
 
 #  ========================================
 #  Annað

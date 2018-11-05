@@ -7,5 +7,5 @@
     <li><a href="/midannarverkefni">Miðannarverkefni</a></li>
     <li><a href="/Verkefni_5">Verkefni 5</a></li>
     <li><a href="/Verkefni_6">Verkefni 6</a></li>
-    <li><a href="/Verkefni_7">Verkefni 6</a></li>
+    <li><a href="/Verkefni_7">Verkefni 7</a></li>
 </ul>

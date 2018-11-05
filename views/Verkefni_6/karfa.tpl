@@ -9,6 +9,7 @@
 </head>
 <body>
     % include("Verkefni_6/haus.tpl")
+    <h1 class="karfa_titill">Karfa</h1>
     % for vara in a_vorur_radad:
         <section class="vara_karfa">
             <section class="x_karfa">
@@ -26,5 +27,11 @@
             <p class="lysing_karfa">{{ allar_vorur[1][vara[0][1]] }}</p>
         </section>
     % end
+    <hr class="karfa_samtals_skiptari">
+    <section class="karfa_samtals">
+        <h3 class="karfa_heildarverd_str">Samtals</h4>
+        <span></span>
+        <h3 class="karfa_heildarverd">{{ heildarverd }}kr.</h4>
+    </section>
 </body>
 </html>

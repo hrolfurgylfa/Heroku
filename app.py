@@ -663,9 +663,14 @@ def Verkefni_6_karfa():
                 if vara in x:
                     x.append(vara)
 
-    print("Listi:",a_vorur_radad)
+    heildarverd = 0
+    for vara in allt_i_korfu:
+        heildarverd += allar_vorur[2][vara[1]]
 
-    return template("Verkefni_6/karfa.tpl", allar_vorur=allar_vorur, allt_i_korfu = allt_i_korfu, a_vorur_radad = a_vorur_radad)
+    if len(allt_i_korfu) > 0:
+        return template("Verkefni_6/karfa.tpl", allar_vorur=allar_vorur, allt_i_korfu = allt_i_korfu, a_vorur_radad = a_vorur_radad, heildarverd = heildarverd)
+    else:
+        return template("Verkefni_6/tom_karfa.tpl", allt_i_korfu = allt_i_korfu)
 
 @route("/Verkefni_6/eyda_ur_korfu")
 def Verkefni_6_eyda_ur_korfu():
@@ -682,8 +687,8 @@ def Verkefni_6_eyda_ur_korfu():
             allt_i_korfu2.append(x)
     
     for x in allt_i_korfu2:
-        x += strengur
-    
+        strengur += x
+
     session["fot"] = strengur
 
     session.save()

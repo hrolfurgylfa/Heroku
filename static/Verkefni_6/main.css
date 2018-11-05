@@ -7,6 +7,9 @@ a {
     text-decoration: none;
     color: black;
 }
+.blar_linkur {
+    color: blue;
+}
 /* Grid Area */
 .fot_1 {grid-area: fot_1}
 .fot_2 {grid-area: fot_2}
@@ -107,6 +110,20 @@ a {
 .verd_vara {
     margin-top: 0;
 }
+.texti_vara a {
+    font-size: 16pt;
+}
+.karfa_samtals_skiptari {
+    max-width: 50em;
+    margin: auto;
+}
+.karfa_samtals {
+    display: grid;
+    grid-template-columns: 7fr 2.8fr 10fr;
+}
+.karfa_samtals .karfa_heildarverd_str {
+    text-align: right;
+}
 /*======================================
  Fótur
 ======================================== */
@@ -121,9 +138,12 @@ a {
 /*======================================
  Karfa
 ======================================== */
+.karfa_titill {
+    text-align: center;
+}
 .vara_karfa {
     display: grid;
-    grid-template-columns: 7fr 1fr 10fr;
+    grid-template-columns: 7fr 2.8fr 10fr;
     grid-template-areas:
     "x_karfa mynd_karfa titill_karfa"
     "x_karfa mynd_karfa lysing_karfa";
@@ -155,7 +175,9 @@ a {
 .titill_karfa {
     margin-bottom: 0;
 }
-
+.tomkarfa_texti {
+    text-align: center;
+}
 /*======================================
  Karfa uppi
 ======================================== */

@@ -17,7 +17,7 @@
             <h1 class="nafn_vara">{{ allar_vorur[0][vara] }}</h1>
             <h3 class="verd_vara">{{ allar_vorur[2][vara] }}kr.</h3>
             <p class="lysing_vara">{{ allar_vorur[1][vara] }}</p>
-            <a href="/Verkefni_6/kaupa_voru?i={{ vara }}">Kaupa</a>
+            <a class="blar_linkur" href="/Verkefni_6/kaupa_voru?i={{ vara }}">Setja í körfu</a>
         </section>
     </div>
 </body>

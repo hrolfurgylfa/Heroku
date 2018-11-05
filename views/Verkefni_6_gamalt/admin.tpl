@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Admin síða</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="/static/Verkefni_6/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/Verkefni_6_gamalt/main.css" />
 <body>
     <header class="header_admin">
         <h1>Velkomin/n {{ u }}</h1>

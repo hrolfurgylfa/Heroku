@@ -9,7 +9,7 @@
 </head>
 <body>
     % include("Verkefni_6/haus.tpl")
-    <div class="AdalView">      
+    <div class="AdalView">
         <section class="adalmynd_vara">
             <img src="/static/Verkefni_6/fot/{{ vara }}.jpg" alt="">
         </section>  

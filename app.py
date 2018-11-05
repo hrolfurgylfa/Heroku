@@ -618,14 +618,9 @@ app = SessionMiddleware(bottle.app(), session_opts)
 @route("/Verkefni_6")
 def Verkefni_6():
     allar_vorur = buaTilHluti()
-
     session = bottle.request.environ.get('beaker.session')
     session["fot"] = session.get("fot","")
-    print(session["fot"])
-
     allt_i_korfu = saekjaAlltIKorfu(session)
-
-    print("Allt í körfu:",allt_i_korfu)
 
     return template("Verkefni_6/index.tpl", allar_vorur=allar_vorur, allt_i_korfu = allt_i_korfu)
 
@@ -633,14 +628,9 @@ def Verkefni_6():
 def Verkefni_6_vara():
     vara = request.query.i
     allar_vorur = buaTilHluti()
-
     session = bottle.request.environ.get('beaker.session')
     session["fot"] = session.get("fot","")
-    print(session["fot"])
-
     allt_i_korfu = saekjaAlltIKorfu(session)
-
-    print("Allt í körfu:",allt_i_korfu)
 
     return template("Verkefni_6/bud.tpl", allar_vorur=allar_vorur, allt_i_korfu = allt_i_korfu, vara = vara)
 
@@ -650,11 +640,54 @@ def Verkefni_6_kaupa_voru():
     vara = baetaVid0(vara)
     session = bottle.request.environ.get('beaker.session')
     session["fot"] = session.get("fot","")
-    print("Vara:",vara)
     session["fot"] += vara
-    print('session["fot"] =',session["fot"])
     session.save()
     return redirect("/Verkefni_6")
+
+@route("/Verkefni_6/karfa")
+def Verkefni_6_karfa():
+    allar_vorur = buaTilHluti()
+    session = bottle.request.environ.get('beaker.session')
+    session["fot"] = session.get("fot","")
+    allt_i_korfu = saekjaAlltIKorfu(session)
+
+    a_vorur_radad = []
+    allt_komid = ""
+    for vara in allt_i_korfu:
+        if vara not in allt_komid:
+            allt_komid += str(vara)
+            listi2 = [vara]
+            a_vorur_radad.append(listi2)
+        else:
+            for x in a_vorur_radad:
+                if vara in x:
+                    x.append(vara)
+
+    print("Listi:",a_vorur_radad)
+
+    return template("Verkefni_6/karfa.tpl", allar_vorur=allar_vorur, allt_i_korfu = allt_i_korfu, a_vorur_radad = a_vorur_radad)
+
+@route("/Verkefni_6/eyda_ur_korfu")
+def Verkefni_6_eyda_ur_korfu():
+    vara = request.query.i
+    vara = baetaVid0(vara)
+    session = bottle.request.environ.get('beaker.session')
+    session["fot"] = session.get("fot","")
+    allt_i_korfu = saekjaAlltIKorfu(session)
+
+    strengur = ""
+    allt_i_korfu2 = []
+    for x in allt_i_korfu:
+        if x != vara:
+            allt_i_korfu2.append(x)
+    
+    for x in allt_i_korfu2:
+        x += strengur
+    
+    session["fot"] = strengur
+
+    session.save()
+    return redirect("/Verkefni_6/karfa")
 
 #  ========================================
 #  Annað

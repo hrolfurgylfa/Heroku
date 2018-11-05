@@ -18,6 +18,11 @@ a {
 .adalmynd_vara {grid-area: adalmynd_vara}
 .texti_vara {grid-area: texti_vara}
 
+.x_karfa {grid-area: x_karfa}
+.mynd_karfa {grid-area: mynd_karfa}
+.titill_karfa {grid-area: titill_karfa}
+.lysing_karfa {grid-area: lysing_karfa}
+
 /*======================================
  Haus
 ======================================== */
@@ -115,6 +120,44 @@ a {
 }
 /*======================================
  Karfa
+======================================== */
+.vara_karfa {
+    display: grid;
+    grid-template-columns: 7fr 1fr 10fr;
+    grid-template-areas:
+    "x_karfa mynd_karfa titill_karfa"
+    "x_karfa mynd_karfa lysing_karfa";
+
+    margin: .5em 0;
+    height: 7em;
+}
+.x_karfa {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    height: 7em;
+}
+.x_karfa h1 {
+    font-size: 32pt;
+    margin-right: .5em;
+    /* width: auto;
+    height: 100%; */
+}
+.mynd_karfa {
+    height: 7em;
+}
+.mynd_karfa img {
+    float: right;
+    margin-right: .5em;
+    width: auto;
+    height: 100%;
+}
+.titill_karfa {
+    margin-bottom: 0;
+}
+
+/*======================================
+ Karfa uppi
 ======================================== */
 .karfa_takki {
     text-align: right;

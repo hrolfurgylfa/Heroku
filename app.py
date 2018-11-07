@@ -13,7 +13,10 @@ from bottle import *
 
 from beaker.middleware import SessionMiddleware
 
+import pymysql.cursors
+
 skraarnafn = "static/Verkefni_6_gamalt/password.txt"
+skraarnafn_V7 = "static/Verkefni_7/password.txt"
 
 #Föll
 def frettir():
@@ -176,6 +179,29 @@ def saekjaAlltIKorfu(breyta):
             allt_i_korfu.append(str(tala1)+str(tala))
     
     return allt_i_korfu
+
+def saekjaNotendurV7():# Sækja password skrá
+    oll_password = []
+    connection = pymysql.connect(host='tsuts.tskoli.is',
+                                user='2109013290',
+                                password='mypassword',
+                                db='2109013290_Verkefni_7_VEB',
+                                charset='utf8mb4',
+                                cursorclass=pymysql.cursors.DictCursor)
+    
+    cursor = connection.cursor()
+    sql = "SELECT USER_USERNAME, USER_PASSWORD, USER_NAME FROM USERS"
+    cursor.execute(sql)
+    result = cursor.fetchall()
+
+    for user in result:
+        notandi_listi = []
+        for x in ["USER_USERNAME", "USER_PASSWORD", "USER_NAME"]:
+            notandi_listi.append(user[x])
+        oll_password.append(notandi_listi)
+    
+    connection.close()
+    return oll_password
 
 #  ========================================
 #  Verkefni 1
@@ -693,6 +719,90 @@ def Verkefni_6_eyda_ur_korfu():
 
     session.save()
     return redirect("/Verkefni_6/karfa")
+
+#  ========================================
+#  Verkefni 7
+#  ========================================
+@route("/Verkefni_7")
+def Verkefni_7():
+    username = request.get_cookie("innskraning_hrolfurgylfa_heroku_verkefni6", secret='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')
+    print("Cookie username:",username)
+    oll_password = saekjaNotendurV7()
+    print("Allir notendur:",oll_password)
+    notandi_til = False
+    for notandi in oll_password:
+        if notandi[0] == username:
+            u = notandi[0]
+            n = notandi[2]
+            notandi_til = True
+            return template("Verkefni_7/admin.tpl", n = n, u = u, o = oll_password)
+    
+    if notandi_til is False:
+        return template("Verkefni_7/index.tpl")
+
+@route("/Verkefni_7/innskraning", method="POST")
+def Verkefni_7_innskraning():
+
+    username = request.forms.username
+    password = request.forms.password
+    
+    oll_password = saekjaNotendurV7()
+    
+    notandi_fundinn = False
+    notandi_rett_adgangsord = False
+    for notandi in oll_password:
+        if notandi[0] == username:
+            notandi_fundinn = True
+            if notandi[1] == password:
+                response.set_cookie("innskraning_hrolfurgylfa_heroku_verkefni6", notandi[0], secret="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")
+                notandi_rett_adgangsord = True
+                break
+    
+    if notandi_fundinn is True and notandi_rett_adgangsord is True:
+        return redirect("/Verkefni_7")
+    elif notandi_fundinn is True and notandi_rett_adgangsord is False:
+        return template("Verkefni_7/error.tpl", t = "Rangt notendanafn eða lykilorð")
+    else:
+        return template("Verkefni_7/error.tpl", t = "Rangt notendanafn eða lykilorð")
+
+@route("/Verkefni_7/bua_til_adgang")
+def Verkefni_7_bua_til_adgang():
+    return template("Verkefni_7/nyr_notandi.tpl")
+
+@route("/Verkefni_7/gera_notanda", method="POST")
+def Verkefni_7_gera_notanda():
+    nafn = request.forms.nafn
+    username = request.forms.username
+    password = request.forms.password
+    password2 = request.forms.password2
+
+    notendur = saekjaNotendurV7()
+    for notandi in notendur:
+        if notandi[0] == username:
+            return template("Verkefni_7/error.tpl", t = "Þesi notandi er núþegar til", l = "/Verkefni_7/bua_til_adgang")
+
+    if password != password2:
+        return template("Verkefni_7/error.tpl", t = "Aðgangsorðin sem þú settir inn voru ekki eins", l = "/Verkefni_7/bua_til_adgang")
+
+    connection = pymysql.connect(host='tsuts.tskoli.is',
+                                user='2109013290',
+                                password='mypassword',
+                                db='2109013290_Verkefni_7_VEB',
+                                charset='utf8mb4',
+                                cursorclass=pymysql.cursors.DictCursor)
+    
+    cursor = connection.cursor()
+    sql = 'INSERT INTO USERS(USER_USERNAME, USER_PASSWORD, USER_NAME) VALUES ("'+str(username)+'", "'+str(password)+'", "'+str(nafn)+'")'
+    cursor.execute(sql)
+    connection.commit()
+    return redirect("/Verkefni_7")
+
+@route("/Verkefni_7/utskra")
+def Verkefni_7_utskra():
+    username = request.query.u
+    if username == request.get_cookie("innskraning_hrolfurgylfa_heroku_verkefni6", secret='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'):
+        response.delete_cookie("innskraning_hrolfurgylfa_heroku_verkefni6", secret='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')
+    return redirect("/Verkefni_7")
 
 #  ========================================
 #  Annað

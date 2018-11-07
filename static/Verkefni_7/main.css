@@ -1,0 +1,106 @@
+body {
+    max-width: 50em;
+    margin: 0 auto;
+    font-family: sans-serif;
+}
+
+/* Stílar */
+
+.titill {
+    text-align: center;
+}
+.header_admin {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.header_admin h1 {
+    margin: .5em;
+    display: flex;
+    align-items: center;
+}
+.header_admin h3 {
+    /* display: flex;
+    align-items: center; */
+    text-align: right;
+}
+.header_admin h3 a {
+    display: inline-block;
+    color: black;
+    text-decoration: none;
+    border: 3px ridge blue;
+    background-color: lightblue;
+    padding: 3px;
+    margin: .5em;
+}
+.innskraning {
+    text-align: center;
+    margin-top: 2em;
+    border: 1px solid black;
+    border-radius: 1em;
+}
+.innskraning input {
+    margin-bottom: 1em;
+}
+
+@media screen and (max-width: 340px) {
+    .header_admin {
+        grid-template-columns: 1fr;
+    }
+    .header_admin h1 {
+        text-align: center;
+        margin: .1em;
+    }
+    .header_admin h3 {
+        text-align: center;
+        margin: .1em;
+    }
+}
+
+/* =======================================
+   Tafla 1
+  ======================================== */
+.tafla_1 {
+    border-collapse: collapse;
+    margin: 1em auto;
+    padding: 0 0 10px 0;
+}
+.tafla_1 thead tr th,
+.tafla_1 tbody tr td {
+    border: 1px solid black;
+    padding: 7px 10px;
+}
+
+@media screen and (max-width: 740px) {
+    .tafla_1 {
+        width: 90%;
+        max-width: 25em;
+    }
+    .tafla_1 thead {
+        display: none;
+    }
+    .tafla_1 td {
+        display: block;
+        text-align: right;
+    }
+    .tafla_1 tr {
+        display: block;
+        margin-bottom: .75em;
+    }
+    .tafla_1 td:before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+    }
+}
+/*  ========================================
+  Viðmið - breakpoints 37.5em = 600px + 
+  ========================================*/
+@media screen and (max-width: 37.5em) {  
+    .oll_fyrirtaeki{
+        flex-flow: column;
+        text-align: center;
+    }
+    .odyrasta_bensin {
+        text-align: center;
+    }
+}

@@ -17,6 +17,7 @@
                 <th>Nafn</th>
                 <th>Notendanafn</th>
                 <th>Aðgangsorð</th>
+                <th>Eyða</th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +26,7 @@
                     <td data-label="Nafn">{{ notandi[2] }}</td>
                     <td data-label="Notendanafn">{{ notandi[0] }}</td>
                     <td data-label="Aðgangsorð">{{ notandi[1] }}</td>
+                    <td data-label="Eyða" class="eyda_user"><a href="/Verkefni_7/eyda_notenda?u={{notandi[0]}}">X</a></td>
                 </tr>
             % end
         </tbody>

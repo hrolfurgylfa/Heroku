@@ -5,7 +5,6 @@ body {
 }
 
 /* Stílar */
-
 .titill {
     text-align: center;
 }
@@ -68,6 +67,13 @@ body {
 .tafla_1 tbody tr td {
     border: 1px solid black;
     padding: 7px 10px;
+}
+.eyda_user {
+    text-align: center;
+}
+.eyda_user a {
+    text-decoration: none;
+    color: black;
 }
 
 @media screen and (max-width: 740px) {

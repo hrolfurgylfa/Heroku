@@ -1,7 +1,14 @@
 <section class="sidebar">
-    <h1>Nýjustu blog</h1>
+    <h1><a href="/blog/username">Nýjustu blog</a></h1>
     <hr>
-    <h2>Titill</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque tincidunt erat ut pharetra mattis. Vestibulum in ante sed magna elementum dignissim. Curabitur id porttitor lectus, sed lobortis mauris. Morbi sapien augue, dignissim vitae sapien id, malesuada ornare diam. Sed semper tristique laoreet.</p>
-    <hr>
+    % for i in l:
+        <h2>{{ i[2] }}</h2>
+        % try:
+            % print(i[3][100])
+            <p>{{ i[3][0:200] }}...</p>
+        % except:
+            <p>{{ i[3][0:200] }}</p>
+        % end
+        <hr>
+    % end
 </section>

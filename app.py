@@ -835,6 +835,13 @@ def Verkefni_7_eyda_notenda():
         return redirect("/Verkefni_7")
 
 #  ========================================
+#  Verkefni 7
+#  ========================================
+
+@route("/blog")
+def Blog():
+    return template("Blog/forsida.tpl")
+#  ========================================
 #  Annað
 #  ========================================
 # Til þess að setja inn myndir

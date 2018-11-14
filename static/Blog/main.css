@@ -1,0 +1,29 @@
+/* Fyrir allt */
+body {
+    font-family: 'Ubuntu', sans-serif;
+}
+h1 {
+    font-size: 26pt
+}
+
+/* Grid Area */
+.content {grid-area: content}
+.sidebar {grid-area: sidebar}
+
+/* Template areas */
+.sidebar_holder {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas: 
+    "content sidebar";
+}
+
+/* Padding og margin */
+.sidebar {
+    margin: .4em;
+}
+
+/* Annað */
+.forsida_titill {
+    text-align: center;
+}

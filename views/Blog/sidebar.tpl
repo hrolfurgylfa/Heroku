@@ -1,5 +1,5 @@
 <section class="sidebar">
-    <h1><a href="/blog/username">Nýjustu blog</a></h1>
+    <h1><a class="ny_blog_titill" href="/blog/oll?sort=nyjast">Nýjustu blog</a></h1>
     <hr>
     % for i in l:
         <h2>{{ i[2] }}</h2>

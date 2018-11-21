@@ -840,7 +840,7 @@ def Verkefni_7_eyda_notenda():
 
 @route("/blog")
 def Blog():
-    listi = []
+    posts = []
     connection = pymysql.connect(host='tsuts.tskoli.is',
                                 user='2109013290',
                                 password='mypassword',
@@ -848,19 +848,19 @@ def Blog():
                                 charset='utf8mb4',
                                 cursorclass=pymysql.cursors.DictCursor)
     cursor = connection.cursor()
-    sql = "SELECT ID, DAGSETNING, TITILL, TEXTI, POST_OWNER FROM POSTS"
+    sql = "SELECT ID, DAGSETNING, TITILL, TEXTI, POST_OWNER, NAFN FROM POSTS JOIN USERS ON POSTS.POST_OWNER = USERS.USERNAME"
     cursor.execute(sql)
     result = cursor.fetchall()
 
     for item in result:
-        notandi_listi = []
-        for x in ["ID", "DAGSETNING", "TITILL", "TEXTI", "POST_OWNER"]:
-            notandi_listi.append(item[x])
-        listi.append(notandi_listi)
-        print("MySQL Listi",listi)
+        posts_listi = []
+        for x in ["ID", "DAGSETNING", "TITILL", "TEXTI", "POST_OWNER", "NAFN"]:
+            posts_listi.append(item[x])
+        posts.append(posts_listi)
+        print("MySQL Listi:",posts)
     
     connection.close()
-    return template("Blog/forsida.tpl", l = listi)
+    return template("Blog/forsida.tpl", l = posts)
 #  ========================================
 #  Annað
 #  ========================================

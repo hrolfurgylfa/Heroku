@@ -44,49 +44,24 @@ h1 {
 /* ========================================
   Yfirstikan
   ======================================== */
-  /* ====== Innskráðir ====== */
-  .topnav input {
-    display: none;
-  }
-  .topnav label {
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 99;
-    width: 11.5em;
-    border: 3px outset red;
-    font-size: 1.2em;
-    text-align: center;
-    padding: .2em .4em;
-    background-color: lightblue;
-  }
-  .topnav input:checked ~ .topmenu {
-    position: fixed;
-    top: 2.2em;
-  
-    transition: all .5s ease;
-  }
-  .topnav input:checked + label {
-    box-shadow: inset 0 .2em rgba(0,0,0,.25);
-    border: 2px inset red;
-  }
-  .topmenu {
+  .topnav {
     display: block;
     position: fixed;
-    top: -6em;
+    width: 100%;
+    height: 4em;
+    background: lightblue;
+    top: 0;
+    left: 0;
     right: 0;
-    width: 15em;
-    z-index: 90;
+  }
+  .topmenu {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    z-index: 998;
     padding: 0;
     margin: 0;
     list-style: none;
-    background-color: lightblue;
-    transition: all .5s ease;
-  }
-  .topmenu li {
-    border: 0;
-    border-bottom: 1px solid black; 
-    padding: 0;
   }
   .topmenu a {
     display: block;
@@ -105,21 +80,10 @@ h1 {
     color: white;
     background-color: blue;
   }
-
-  /* ====== Allir ====== */
-  .topnav {
-    display: block;
-    position: fixed;
-    width: 100%;
-    height: 4em;
-    background: lightblue;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
   .nav_whitespace {
     display: block;
     position: relative;
-    height: 4em;
+    z-index: -1;
+    height: 2em;
     top: 0;
   }

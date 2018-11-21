@@ -14,8 +14,6 @@
 <body>
     % if i == True:
         <nav class="topnav">
-            <input type="checkbox" id="toggle">
-            <label for="toggle">Efnisyfirlit &#9776;</label>
             <ul class="topmenu">
                 <li><a href="">Skrifa nýjan póst</a></li>
                 <li><a href="">Breyta nafni</a></li>

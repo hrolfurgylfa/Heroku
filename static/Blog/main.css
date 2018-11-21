@@ -26,6 +26,10 @@ h1 {
     grid-template-areas: 
     "content sidebar";
 }
+.sidebar_split {
+  display: grid;
+  grid-template-columns: 2fr 1fr
+}
 
 /* Padding og margin */
 .sidebar {
@@ -35,10 +39,23 @@ h1 {
 .ny_blog_titill {
     color: black;
 }
+/* Texta stærð */
+.like_a_sidebar {
+  font-size: 2em;
+}
 
 /* Annað */
 .forsida_titill {
     text-align: center;
+}
+/* Like takki */
+.like_takki {
+  width: 1em;
+  height: 1em;
+}
+.like_a_sidebar {
+  text-align: right;
+  margin: 16px 0;
 }
 
 /* ========================================

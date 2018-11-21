@@ -203,6 +203,27 @@ def saekjaNotendurV7():# Sækja password skrá
     connection.close()
     return oll_password
 
+class database():
+    def __init__(self, net_thjonn, notandi, adgangsord, gagnagrunnur):
+        self.net_thjonn = net_thjonn
+        self.notandi = notandi
+        self.adgangsord = adgangsord
+        self.gagnagrunnur = gagnagrunnur
+
+    def executeSQL(self, sql):
+        connection = pymysql.connect(host=self.net_thjonn,
+                                user=self.notandi,
+                                password=self.adgangsord,
+                                db=self.gagnagrunnur,
+                                charset='utf8mb4',
+                                cursorclass=pymysql.cursors.DictCursor)
+        cursor = connection.cursor()
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        cursor.close()
+        return result
+
+
 #  ========================================
 #  Verkefni 1
 #  ========================================
@@ -840,27 +861,11 @@ def Verkefni_7_eyda_notenda():
 
 @route("/blog")
 def Blog():
-    posts = []
-    connection = pymysql.connect(host='tsuts.tskoli.is',
-                                user='2109013290',
-                                password='mypassword',
-                                db='2109013290_blog',
-                                charset='utf8mb4',
-                                cursorclass=pymysql.cursors.DictCursor)
-    cursor = connection.cursor()
-    sql = "SELECT ID, DAGSETNING, TITILL, TEXTI, POST_OWNER, NAFN FROM POSTS JOIN USERS ON POSTS.POST_OWNER = USERS.USERNAME"
-    cursor.execute(sql)
-    result = cursor.fetchall()
-
-    for item in result:
-        posts_listi = []
-        for x in ["ID", "DAGSETNING", "TITILL", "TEXTI", "POST_OWNER", "NAFN"]:
-            posts_listi.append(item[x])
-        posts.append(posts_listi)
-        print("MySQL Listi:",posts)
+    db = database("tsuts.tskoli.is", "2109013290", "mypassword", "2109013290_blog")
+    flokkad_dagsetning = db.executeSQL("SELECT ID, DAGSETNING, LIKES, TITILL, TEXTI, POST_OWNER, NAFN FROM POSTS JOIN USERS ON POSTS.POST_OWNER = USERS.USERNAME ORDER BY DAGSETNING DESC")
+    flokkad_like = db.executeSQL("SELECT ID, DAGSETNING, LIKES, TITILL, TEXTI, POST_OWNER, NAFN FROM POSTS JOIN USERS ON POSTS.POST_OWNER = USERS.USERNAME ORDER BY LIKES DESC")
     
-    connection.close()
-    return template("Blog/forsida.tpl", l = posts)
+    return template("Blog/forsida.tpl", f_d = flokkad_dagsetning, f_l = flokkad_like)
 #  ========================================
 #  Annað
 #  ========================================

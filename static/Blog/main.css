@@ -18,13 +18,14 @@ h1 {
 /* Grid Area */
 .content {grid-area: content}
 .sidebar {grid-area: sidebar}
+.sidebar2 {grid-area: sidebar2}
 
 /* Template areas */
 .sidebar_holder {
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr;
     grid-template-areas: 
-    "content sidebar";
+    "content sidebar sidebar2";
 }
 .sidebar_split {
   display: grid;
@@ -33,11 +34,14 @@ h1 {
 
 /* Padding og margin */
 .sidebar {
-    margin: .4em;
+  margin: .4em;
+}
+.sidebar2 {
+  margin: .4em;
 }
 /* Litur */
 .ny_blog_titill {
-    color: black;
+  color: black;
 }
 /* Texta stærð */
 .like_a_sidebar {

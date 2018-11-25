@@ -70,10 +70,9 @@ h1 {
     max-width: 80%;
     margin: auto;
   }
-  .fyrirsogn_newpost,
-  .meginmal_newpost {
+  .fyrirsogn_newpost {
     width: 100%;
-    font-size: 18pt;
+    font-size: 14pt;
   }
   .send_newpost {
     float: right;

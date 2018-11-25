@@ -3,7 +3,7 @@ body {
     font-family: 'Ubuntu', sans-serif;
 }
 h1 {
-    font-size: 26pt
+    font-size: 26pt;
 }
 .linkur_takki {
     all: unset;
@@ -29,7 +29,7 @@ h1 {
 }
 .sidebar_split {
   display: grid;
-  grid-template-columns: 2fr 1fr
+  grid-template-columns: 2fr 1fr;
 }
 .sidebar_holder_half {
   display: grid;
@@ -68,15 +68,18 @@ h1 {
 /* ========================================
   Bæta við grein
   ======================================== */
+  .skrifa_nyjan_post {
+    max-width: 80%;
+    margin: auto;
+  }
   .fyrirsogn_newpost,
   .meginmal_newpost {
-    display: flex;
-    margin: auto;
-    width: 80%;
-    height: 200%;
+    width: 100%;
+    font-size: 18pt;
   }
   .send_newpost {
     float: right;
+    margin-top: 1em;
   }
   .h_newpost {
     text-align: center;

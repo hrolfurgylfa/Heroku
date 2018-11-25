@@ -15,7 +15,7 @@
             % end
             <section class="sidebar_split">
                 <p>{{ i["DAGSETNING"] }}</p>
-                <p class="like_a_sidebar">{{ i["LIKES"] }}<img class="like_takki" src="/static/Blog/Myndir/Takkar/like_button.svg" alt="sem líkar þetta"></p>
+                <p class="like_a_sidebar">{{ i["LIKES"] }}<img class="like_takki" src="/static/Blog/Myndir/Takkar/like_button2.svg" alt="sem líkar þetta"></p>
             </section>
         </section>
         % tel += 1

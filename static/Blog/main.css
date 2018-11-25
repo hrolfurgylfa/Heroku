@@ -23,13 +23,17 @@ h1 {
 /* Template areas */
 .sidebar_holder {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    grid-template-areas: 
-    "content sidebar sidebar2";
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas:
+    "sidebar content sidebar2";
 }
 .sidebar_split {
   display: grid;
   grid-template-columns: 2fr 1fr
+}
+.sidebar_holder_half {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 /* Padding og margin */
@@ -61,6 +65,22 @@ h1 {
   text-align: right;
   margin: 16px 0;
 }
+/* ========================================
+  Bæta við grein
+  ======================================== */
+  .fyrirsogn_newpost,
+  .meginmal_newpost {
+    display: flex;
+    margin: auto;
+    width: 80%;
+    height: 200%;
+  }
+  .send_newpost {
+    float: right;
+  }
+  .h_newpost {
+    text-align: center;
+  }
 
 /* ========================================
   Yfirstikan

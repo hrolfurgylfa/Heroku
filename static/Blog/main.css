@@ -37,9 +37,7 @@ h1 {
 }
 
 /* Padding og margin */
-.sidebar {
-  margin: .4em;
-}
+.sidebar,
 .sidebar2 {
   margin: .4em;
 }

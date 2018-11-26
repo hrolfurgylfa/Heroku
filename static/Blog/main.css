@@ -41,6 +41,9 @@ h1 {
 .sidebar2 {
   margin: .4em;
 }
+.sidebar_split p {
+  margin-top: 0;
+}
 /* Litur */
 .ny_blog_titill {
   color: black;

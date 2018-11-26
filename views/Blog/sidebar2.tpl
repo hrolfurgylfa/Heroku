@@ -1,5 +1,5 @@
 <section class="sidebar2">
-    <h1><a class="ny_blog_titill" href="/blog/oll?sort=mest_likad">Nýjustu blog</a></h1>
+    <h1><a class="ny_blog_titill" href="/blog/oll?sort=mest_likad">Vinsælustu blog</a></h1>
     % tel = 1
     % for i in f_l:
         % if tel >= 5:

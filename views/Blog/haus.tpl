@@ -18,12 +18,15 @@
                 <li><a href="">Skrifa nýjan póst</a></li>
                 <li><a href="">Breyta nafni</a></li>
                 <li><a href="">Breyta lykilorði</a></li>
-                <li><a href="">Útskrá</a></li>
+                <li><a href="/blog/utskra">Útskrá</a></li>
             </ul>
         </nav>
     % else:
         <nav class="topnav">
-
+            <ul class="topmenu">
+                <li><a href="/blog/innskraning">Innskrá</a></li>
+                <li><a href="/blog/bua_til_adgang">Búa til aðgang</a></li>
+            </ul>
         </nav>
     % end
     <span class="nav_whitespace"></span>

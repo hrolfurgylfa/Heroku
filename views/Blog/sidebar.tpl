@@ -1,11 +1,11 @@
-<section class="sidebar">
-    <h1><a class="ny_blog_titill" href="/blog/oll?sort=nyjast">Nýjustu blog</a></h1>
+<section class="{{ k_nafn }}">
+    <h1><a class="ny_blog_titill" href="{{ l }}">{{ t }}</a></h1>
     % tel = 1
-    % for i in f_d:
+    % for i in f_listi:
         % if tel >= 5:
             % break
         % end
-        <section class="frett_sidebar1_{{ tel }}">
+        <section class="frett_{{ k_nafn }}_{{ tel }}">
             <h2>{{ i["TITILL"] }}</h2>
             % try:
                 % print(i["TEXTI"][100])

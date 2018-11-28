@@ -73,6 +73,17 @@ h1 {
   margin: 16px 0;
 }
 /* ========================================
+  Öll blog og flokkuð blog
+  ======================================== */
+  .oflokkad_fyrirsogn {
+    margin-bottom: 0;
+    margin-top: 1em;
+  }
+  .flokkad_efni {
+    max-width: 30em;
+    margin: auto;
+  }
+/* ========================================
   Innskráning
   ======================================== */
   .innskraning {

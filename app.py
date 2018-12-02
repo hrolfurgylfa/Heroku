@@ -866,7 +866,7 @@ def Verkefni_7_eyda_notenda():
         return redirect("/Verkefni_7")
 
 #  ========================================
-#  Verkefni 7
+#  Blog
 #  ========================================
 
 @route("/blog")
@@ -912,7 +912,6 @@ def Blog_oll_blog():
             return template("Blog/error.tpl", t = "Notandinn sem var verið að reyna að sína er ekki til eða hefur aldrei byrt neinn blog póst", l = "/blog/oll")
         return template("Blog/blog_flokkad.tpl", listi = flokkad_notanda, t = "Blog frá notandanum "+str(nafn_notanda_i_leit), n = notandanafn)
 
-
 @route("/blog/innskraning")
 def Blog_innskraning():
     return template("Blog/innskraning")
@@ -955,6 +954,22 @@ def Blog_bua_til_adganginn():
     db.executeSQL("INSERT INTO USERS(USERNAME, ADGANGSORD, NAFN) VALUES ('"+str(notendanafn)+"','"+str(adgangsord)+"','"+str(nafn)+"')")
 
     return redirect("/blog/innskraning")
+
+@route("/blog/add_post", method="POST")
+def Blog_add_post():
+    fyrirsogn = request.forms.fyrirsogn_newpost or False
+    efni = request.forms.efni_newpost or False
+
+    if fyrirsogn is False or efni is False:
+        return template("Blog/error.tpl", t = "Það þarf að filla út bæði fyrirsögninna og efnið", l = "/blog")
+
+    notandanafn = tekkaInnskraningu()
+
+    db = database("tsuts.tskoli.is", "2109013290", "mypassword", "2109013290_blog")
+    db.executeSQL("INSERT INTO POSTS(DAGSETNING, LIKES, TITILL, TEXTI, POST_OWNER) VALUES (NOW(), 0,'"+str(fyrirsogn)+"','"+str(efni)+"','"+str(notandanafn)+"')")
+
+    return redirect("/blog")
+
 
 #  ========================================
 #  Annað

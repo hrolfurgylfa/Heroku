@@ -8,7 +8,7 @@
             <h3 class="h_newpost">Fyrirsögn</h3>
             <input class="fyrirsogn_newpost" type="text" name="fyrirsogn"><br>
             <h3 class="h_newpost">Meginmál</h3>
-            <textarea name="efni" class="meginmal_newpost text_input_tinymce"></textarea>
+            <textarea name="efni_newpost" class="meginmal_newpost text_input_tinymce"></textarea>
             <!-- <textarea class="meginmal_newpost" type="text" name="efni" required></textarea><br> -->
             
             <input class="send_newpost" type="submit" value="Birta" />

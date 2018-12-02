@@ -8,10 +8,9 @@
         <section class="frett_{{ k_nafn }}_{{ tel }}">
             <h2>{{ i["TITILL"] }}</h2>
             % try:
-                % print(i["TEXTI"][100])
-                <p>{{ i["TEXTI"][0:200] }}...</p>
+                <p>{{ !i["TEXTI"][0:200] }}...</p>
             % except:
-                <p>{{ i["TEXTI"][0:200] }}</p>
+                <p>{{ !i["TEXTI"][0:200] }}</p>
             % end
             <section class="sidebar_split">
                 % dagsetning = str(i["DAGSETNING"])

@@ -960,6 +960,10 @@ def Blog_add_post():
     fyrirsogn = request.forms.fyrirsogn_newpost or False
     efni = request.forms.efni_newpost or False
 
+    print("Breytur:")
+    print(fyrirsogn)
+    print(efni)
+
     if fyrirsogn is False or efni is False:
         return template("Blog/error.tpl", t = "Það þarf að filla út bæði fyrirsögninna og efnið", l = "/blog")
 

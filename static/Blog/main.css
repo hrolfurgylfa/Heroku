@@ -61,7 +61,11 @@ h1 {
 
 /* Annað */
 .forsida_titill {
-    text-align: center;
+  text-align: center;
+}
+.frett_link {
+  text-decoration: none;
+  color: black;
 }
 /* Like takki */
 .like_takki {
@@ -72,6 +76,20 @@ h1 {
   text-align: right;
   margin: 16px 0;
 }
+/* ========================================
+  Ein frétt
+  ======================================== */
+  .content_holder_postur {
+    max-width: 50em;
+    margin: auto;
+  }
+  .titill_postur {
+    text-align: center;
+  }
+  .meginmal_postur {
+
+  }
+
 /* ========================================
   Öll blog og flokkuð blog
   ======================================== */

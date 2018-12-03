@@ -6,8 +6,9 @@ else:
 end
 %>
 
-<h1>{{ p["TITILL"] }}</h1>
-
-<p>{{ !p["TEXTI"] }}</p>
+<section class="content_holder_postur">
+    <h1 class="titill_postur">{{ p["TITILL"] }}</h1>
+    <p class="meginmal_postur">{{ !p["TEXTI"] }}</p>
+</section>
 
 % include("Blog/fotur.tpl")

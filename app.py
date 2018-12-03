@@ -883,6 +883,18 @@ def Blog():
     
     return template("Blog/forsida_utskradur.tpl", f_d = flokkad_dagsetning, f_l = flokkad_like)
 
+@route("/blog/postur")
+def Blog_postur():
+    id = request.query.id
+    db = database("tsuts.tskoli.is", "2109013290", "mypassword", "2109013290_blog")
+    post = db.executeSQL("SELECT ID, DAGSETNING, LIKES, TITILL, TEXTI, POST_OWNER, NAFN FROM POSTS JOIN USERS ON POSTS.POST_OWNER = USERS.USERNAME WHERE ID = "+str(id))
+    notandanafn = tekkaInnskraningu()
+    try:
+        post[0]
+    except NameError:
+        return template("Blog/error.tpl", t = "Þessi blog póstur er ekki til", l = "/blog")
+    return template("Blog/blog.tpl", p = post[0], n = notandanafn)
+
 @route("/blog/oll")
 def Blog_oll_blog():
     flokkad = request.query.f or False

@@ -18,9 +18,9 @@
             <li><a href="/blog">Skrifa nýjan póst</a></li>
             <!-- <li><a href="">Breyta nafni</a></li>
             <li><a href="">Breyta lykilorði</a></li> -->
-            <li><a href="/blog/utskra">Útskrá</a></li>
-            <li><a href="/breyta_post?id={{ id }}">Breyta pósti</a></li>
-            <li><a href="/eyda_post?id={{ id }}">Eyða pósti</a></li>
+            <li><a href="/blog/blog/utskra">Útskrá</a></li>
+            <li><a href="/blog/breyta_post?id={{ id }}">Breyta pósti</a></li>
+            <li><a href="/blog/eyda_post?id={{ id }}">Eyða pósti</a></li>
         </ul>
     </nav>
     <span class="nav_whitespace"></span>

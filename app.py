@@ -1001,15 +1001,17 @@ def Blog_lika():
     return redirect("/blog"+str(rurl))
 
 @route("/blog/eyda_post")
-def Blog_lika():
+def Blog_eyda_post():
     id = request.query.id
     db = database("tsuts.tskoli.is", "2109013290", "mypassword", "2109013290_blog")
-    post = db.executeSQL("SELECT ID, DAGSETNING, LIKES, TITILL, TEXTI, POST_OWNER, NAFN FROM POSTS JOIN USERS ON POSTS.POST_OWNER = USERS.USERNAME WHERE ID = "+str(id))
+    post = db.executeSQL("SELECT POST_OWNER FROM POSTS WHERE ID = "+str(id))
     notandanafn = tekkaInnskraningu()
-    # if post[0]["POST_OWNER"] = notandanafn:
-    #     pass
-    # else:
-    #     return redirect("/blog/postur?id="+str(id))
+
+    if post[0]["POST_OWNER"] == notandanafn:
+        db.executeSQL("DELETE FROM POSTS WHERE id = "+str(id))
+        return redirect("/blog")
+    else:
+        return redirect("/blog/postur?id="+str(id))
 
 
 #  ========================================

@@ -1013,6 +1013,22 @@ def Blog_eyda_post():
     else:
         return redirect("/blog/postur?id="+str(id))
 
+@route("/blog/breyta_post")
+def Blog_breyta_post():
+    id = request.query.id
+    db = database("tsuts.tskoli.is", "2109013290", "mypassword", "2109013290_blog")
+    post = db.executeSQL("SELECT ID, DAGSETNING, LIKES, TITILL, TEXTI, POST_OWNER, NAFN FROM POSTS JOIN USERS ON POSTS.POST_OWNER = USERS.USERNAME WHERE ID = "+str(id))
+    notandanafn = tekkaInnskraningu()
+    try:
+        post[0]
+    except NameError:
+        return template("Blog/error.tpl", t = "Þessi blog póstur er ekki til", l = "/blog")
+    
+    if post[0]["POST_OWNER"] == notandanafn:
+        return template("Blog/breyta_post.tpl", p = post[0], n = notandanafn)
+    
+    return redirect("/blog/postur?id="+str(id))
+
 
 #  ========================================
 #  Annað

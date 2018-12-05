@@ -17,8 +17,8 @@
             <ul class="topmenu">
                 <li><a href="/blog">Heim</a></li>
                 <li><a href="/blog">Skrifa nýjan póst</a></li>
-                <li><a href="">Breyta nafni</a></li>
-                <li><a href="">Breyta lykilorði</a></li>
+                <!-- <li><a href="">Breyta nafni</a></li>
+                <li><a href="">Breyta lykilorði</a></li> -->
                 <li><a href="/blog/utskra">Útskrá</a></li>
             </ul>
         </nav>

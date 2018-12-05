@@ -893,6 +893,10 @@ def Blog_postur():
         post[0]
     except NameError:
         return template("Blog/error.tpl", t = "Þessi blog póstur er ekki til", l = "/blog")
+    
+    if post[0]["POST_OWNER"] == notandanafn:
+        return template("Blog/blog.tpl", p = post[0], n = notandanafn, e = True)
+    
     return template("Blog/blog.tpl", p = post[0], n = notandanafn)
 
 @route("/blog/oll")
@@ -985,6 +989,27 @@ def Blog_add_post():
     db.executeSQL("INSERT INTO POSTS(DAGSETNING, LIKES, TITILL, TEXTI, POST_OWNER) VALUES (NOW(), 0,'"+str(fyrirsogn)+"','"+str(efni)+"','"+str(notandanafn)+"')")
 
     return redirect("/blog")
+
+@route("/blog/lika")
+def Blog_lika():
+    rurl = request.query.rurl or ""
+    if rurl != "":
+        rurl = "/" + rurl
+    id = request.query.id
+    db = database("tsuts.tskoli.is", "2109013290", "mypassword", "2109013290_blog")
+    db.executeSQL("UPDATE POSTS SET LIKES = LIKES + 1 WHERE ID = "+str(id))
+    return redirect("/blog"+str(rurl))
+
+@route("/blog/eyda_post")
+def Blog_lika():
+    id = request.query.id
+    db = database("tsuts.tskoli.is", "2109013290", "mypassword", "2109013290_blog")
+    post = db.executeSQL("SELECT ID, DAGSETNING, LIKES, TITILL, TEXTI, POST_OWNER, NAFN FROM POSTS JOIN USERS ON POSTS.POST_OWNER = USERS.USERNAME WHERE ID = "+str(id))
+    notandanafn = tekkaInnskraningu()
+    # if post[0]["POST_OWNER"] = notandanafn:
+    #     pass
+    # else:
+    #     return redirect("/blog/postur?id="+str(id))
 
 
 #  ========================================

@@ -958,15 +958,21 @@ def Blog_bua_til_adgang():
 
 @route("/blog/bua_til_adganginn", method="POST")
 def Blog_bua_til_adganginn():
+    db = database("tsuts.tskoli.is", "2109013290", "mypassword", "2109013290_blog")
     notendanafn = request.forms.notendanafn
     adgangsord = request.forms.adgangsord
     adgangsord2 = request.forms.adgangsord2
     nafn = request.forms.nafn
 
+    oll_notendanofn = db.executeSQL("SELECT USERNAME FROM USERS")
+
+    for nafn in oll_notendanofn:
+        if notendanafn == nafn["USERNAME"]:
+            return template("Blog/error.tpl",t = "Þetta notandanafn er núþegar tekið", l = "/blog/bua_til_adgang")
+
     if adgangsord != adgangsord2:
-        return template("blog/error.tpl",t = "Aðgangsorðin sem þú slóst inn voru ekki eins", l = "/blog/bua_til_adgang")
+        return template("Blog/error.tpl",t = "Aðgangsorðin sem þú slóst inn voru ekki eins", l = "/blog/bua_til_adgang")
     
-    db = database("tsuts.tskoli.is", "2109013290", "mypassword", "2109013290_blog")
     db.executeSQL("INSERT INTO USERS(USERNAME, ADGANGSORD, NAFN) VALUES ('"+str(notendanafn)+"','"+str(adgangsord)+"','"+str(nafn)+"')")
 
     return redirect("/blog/innskraning")

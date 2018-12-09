@@ -1029,6 +1029,18 @@ def Blog_breyta_post():
     
     return redirect("/blog/postur?id="+str(id))
 
+@route("/blog/uppfaera_post", method="POST")
+def Blog_uppfaera_post():
+    fyrirsogn = request.forms.fyrirsogn_breytapost
+    efni = request.forms.efni_breytapost
+    id = request.forms.id
+
+    db = database("tsuts.tskoli.is", "2109013290", "mypassword", "2109013290_blog")
+    
+    db.executeSQL("UPDATE POSTS SET TITILL = '"+str(fyrirsogn)+"', TEXTI = '"+str(efni)+"' WHERE ID = "+str(id))
+
+    return redirect("/blog/postur?id="+str(id))
+
 
 #  ========================================
 #  Annað

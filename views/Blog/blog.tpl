@@ -13,7 +13,7 @@ end
 <section class="content_holder_postur">
     <h1 class="titill_postur">{{ p["TITILL"] }}</h1>
     <p class="meginmal_postur">{{ !p["TEXTI"] }}</p>
-    <h4 class="hofundur">{{ p["NAFN"] }}</h4>
+    <h4 class="hofundur"><a href="/blog/oll?u={{ p["POST_OWNER"] }}" class="nafna_linkur">{{ p["NAFN"] }}</a></h4>
     <section class="sidebar_split">
         % dagsetning = str(p["DAGSETNING"])
         % ny_dagsetning = dagsetning[8:10]+"/"+dagsetning[5:7]+"/"+dagsetning[0:4]+" "+dagsetning[11:16]

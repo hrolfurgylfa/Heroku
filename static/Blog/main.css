@@ -18,6 +18,9 @@ h1 {
 .center {
   text-align: center;
 }
+.falid {
+  display: none;
+}
 
 /* Grid Area */
 .content {grid-area: content}
@@ -94,8 +97,8 @@ h1 {
   .titill_postur {
     text-align: center;
   }
-  .meginmal_postur {
-
+  .nafna_linkur {
+    color: black;
   }
 
 /* ========================================

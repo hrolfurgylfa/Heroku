@@ -969,11 +969,15 @@ def Blog_bua_til_adganginn():
     print("öll notendanöfn:",oll_notendanofn)
 
     oll_notendanofn_listi = []
-    # try:
-    #     for nafn in oll_notendanofn:
-    #         oll_notendanofn_listi.append(nafn["USERNAME"])
-    # except:
-    #     pass
+    
+    # Ég þurfti að búa til svona semi for lúppu vegna þess að venjuleg for lúppa crashaði með IndexError þótt að ég notaði Try og Excepy
+    tel = 0
+    while True:
+        try:
+            oll_notendanofn_listi.append(oll_notendanofn[tel]["USERNAME"])
+            tel += 1
+        except IndexError:
+            break
 
     if notendanafn in oll_notendanofn_listi:
         return template("Blog/error.tpl",t = "Þetta notandanafn er núþegar tekið", l = "/blog/bua_til_adgang")

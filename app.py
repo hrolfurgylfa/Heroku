@@ -966,9 +966,17 @@ def Blog_bua_til_adganginn():
 
     oll_notendanofn = db.executeSQL("SELECT USERNAME FROM USERS")
 
-    for nafn in oll_notendanofn:
-        if notendanafn == nafn["USERNAME"]:
-            return template("Blog/error.tpl",t = "Þetta notandanafn er núþegar tekið", l = "/blog/bua_til_adgang")
+    print("öll notendanöfn:",oll_notendanofn)
+
+    oll_notendanofn_listi = []
+    # try:
+    #     for nafn in oll_notendanofn:
+    #         oll_notendanofn_listi.append(nafn["USERNAME"])
+    # except:
+    #     pass
+
+    if notendanafn in oll_notendanofn_listi:
+        return template("Blog/error.tpl",t = "Þetta notandanafn er núþegar tekið", l = "/blog/bua_til_adgang")
 
     if adgangsord != adgangsord2:
         return template("Blog/error.tpl",t = "Aðgangsorðin sem þú slóst inn voru ekki eins", l = "/blog/bua_til_adgang")

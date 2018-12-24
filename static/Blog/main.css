@@ -3,50 +3,72 @@ body {
     font-family: 'Ubuntu', sans-serif;
 }
 h1 {
-    font-size: 26pt
+    font-size: 26pt;
 }
 .linkur_takki {
     all: unset;
-    border: 2px outset blue;
+    border: 3px outset blue;
     background: lightblue;
+    padding: .35em;
 }
 .linkur_takki:hover,
 .linkur_takki:active {
-    border: 2px inset blue;
+    border: 3px inset blue;
+}
+.center {
+  text-align: center;
+}
+.falid {
+  display: none;
 }
 
 /* Grid Area */
 .content {grid-area: content}
 .sidebar {grid-area: sidebar}
+.sidebar2 {grid-area: sidebar2}
 
 /* Template areas */
 .sidebar_holder {
     display: grid;
-    grid-template-columns: 3fr 1fr;
-    grid-template-areas: 
-    "content sidebar";
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas:
+    "sidebar content sidebar2";
 }
 .sidebar_split {
   display: grid;
-  grid-template-columns: 2fr 1fr
+  grid-template-columns: 2fr 1fr;
+}
+.sidebar_holder_half {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "sidebar sidebar2";
 }
 
 /* Padding og margin */
-.sidebar {
-    margin: .4em;
+.sidebar,
+.sidebar2 {
+  margin: .4em;
+}
+.sidebar_split p {
+  margin-top: 0;
 }
 /* Litur */
 .ny_blog_titill {
-    color: black;
+  color: black;
 }
 /* Texta stærð */
 .like_a_sidebar {
-  font-size: 2em;
+  font-size: 1.4em;
 }
 
 /* Annað */
 .forsida_titill {
-    text-align: center;
+  text-align: center;
+}
+.frett_link {
+  text-decoration: none;
+  color: black;
 }
 /* Like takki */
 .like_takki {
@@ -57,6 +79,75 @@ h1 {
   text-align: right;
   margin: 16px 0;
 }
+/* ========================================
+  Breyta post
+  ======================================== */
+  .breyta_post {
+    max-width: 60em;
+    margin: auto;
+  }
+
+/* ========================================
+  Ein frétt
+  ======================================== */
+  .content_holder_postur {
+    max-width: 50em;
+    margin: auto;
+  }
+  .titill_postur {
+    text-align: center;
+  }
+  .nafna_linkur {
+    color: black;
+  }
+
+/* ========================================
+  Öll blog og flokkuð blog
+  ======================================== */
+  .oflokkad_fyrirsogn {
+    margin-bottom: 0;
+    margin-top: 1em;
+  }
+  .flokkad_efni {
+    max-width: 30em;
+    margin: auto;
+  }
+/* ========================================
+  Innskráning
+  ======================================== */
+  .innskraning {
+    border: 1px solid black;
+    border-radius: 2em;
+    text-align: center;
+    max-width: 25em;
+    margin: auto;
+  }
+  .innskra_takki {
+    margin: 1em 0;
+  }
+  .innskraning_fyrirsogn {
+    text-align: center;
+    margin-top: 1.7em;
+  }
+
+/* ========================================
+  Bæta við grein
+  ======================================== */
+  .skrifa_nyjan_post {
+    max-width: 80%;
+    margin: auto;
+  }
+  .fyrirsogn_newpost {
+    width: 100%;
+    font-size: 14pt;
+  }
+  .send_newpost {
+    float: right;
+    margin-top: 1em;
+  }
+  .h_newpost {
+    text-align: center;
+  }
 
 /* ========================================
   Yfirstikan

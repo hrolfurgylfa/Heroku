@@ -60,23 +60,15 @@
     </script>
 </head>
 <body>
-    % if i == True:
-        <nav class="topnav">
-            <ul class="topmenu">
-                <li><a href="/blog">Heim</a></li>
-                <li><a href="/blog">Skrifa nýjan póst</a></li>
-                <!-- <li><a href="">Breyta nafni</a></li>
-                <li><a href="">Breyta lykilorði</a></li> -->
-                <li><a href="/blog/utskra">Útskrá</a></li>
-            </ul>
-        </nav>
-    % else:
-        <nav class="topnav">
-            <ul class="topmenu">
-                <li><a href="/blog">Heim</a></li>
-                <li><a href="/blog/innskraning">Innskrá</a></li>
-                <li><a href="/blog/bua_til_adgang">Búa til aðgang</a></li>
-            </ul>
-        </nav>
-    % end
+    <nav class="topnav">
+        <ul class="topmenu">
+            <li><a href="/blog">Heim</a></li>
+            <li><a href="/blog">Skrifa nýjan póst</a></li>
+            <!-- <li><a href="">Breyta nafni</a></li>
+            <li><a href="">Breyta lykilorði</a></li> -->
+            <li><a href="/blog/blog/utskra">Útskrá</a></li>
+            <li><a href="/blog/breyta_post?id={{ id }}">Breyta pósti</a></li>
+            <li><a href="/blog/eyda_post?id={{ id }}">Eyða pósti</a></li>
+        </ul>
+    </nav>
     <span class="nav_whitespace"></span>

@@ -9,6 +9,7 @@
             <a class="frett_link" href="/blog/postur?id={{ i['ID'] }}">
                 <h2>{{ i["TITILL"] }}</h2>
                 % try:
+                    <span class="falid">{{ i["TEXTI"][200] }}</span>
                     <p>{{ !i["TEXTI"][0:200] }}...</p>
                 % except:
                     <p>{{ !i["TEXTI"][0:200] }}</p>

@@ -958,15 +958,33 @@ def Blog_bua_til_adgang():
 
 @route("/blog/bua_til_adganginn", method="POST")
 def Blog_bua_til_adganginn():
+    db = database("tsuts.tskoli.is", "2109013290", "mypassword", "2109013290_blog")
     notendanafn = request.forms.notendanafn
     adgangsord = request.forms.adgangsord
     adgangsord2 = request.forms.adgangsord2
     nafn = request.forms.nafn
 
-    if adgangsord != adgangsord2:
-        return template("blog/error.tpl",t = "Aðgangsorðin sem þú slóst inn voru ekki eins", l = "/blog/bua_til_adgang")
+    oll_notendanofn = db.executeSQL("SELECT USERNAME FROM USERS")
+
+    print("öll notendanöfn:",oll_notendanofn)
+
+    oll_notendanofn_listi = []
     
-    db = database("tsuts.tskoli.is", "2109013290", "mypassword", "2109013290_blog")
+    # Ég þurfti að búa til svona semi for lúppu vegna þess að venjuleg for lúppa crashaði með IndexError þótt að ég notaði Try og Excepy
+    tel = 0
+    while True:
+        try:
+            oll_notendanofn_listi.append(oll_notendanofn[tel]["USERNAME"])
+            tel += 1
+        except IndexError:
+            break
+
+    if notendanafn in oll_notendanofn_listi:
+        return template("Blog/error.tpl",t = "Þetta notandanafn er núþegar tekið", l = "/blog/bua_til_adgang")
+
+    if adgangsord != adgangsord2:
+        return template("Blog/error.tpl",t = "Aðgangsorðin sem þú slóst inn voru ekki eins", l = "/blog/bua_til_adgang")
+    
     db.executeSQL("INSERT INTO USERS(USERNAME, ADGANGSORD, NAFN) VALUES ('"+str(notendanafn)+"','"+str(adgangsord)+"','"+str(nafn)+"')")
 
     return redirect("/blog/innskraning")
@@ -1027,6 +1045,18 @@ def Blog_breyta_post():
     if post[0]["POST_OWNER"] == notandanafn:
         return template("Blog/breyta_post.tpl", p = post[0], n = notandanafn)
     
+    return redirect("/blog/postur?id="+str(id))
+
+@route("/blog/uppfaera_post", method="POST")
+def Blog_uppfaera_post():
+    fyrirsogn = request.forms.fyrirsogn_breytapost
+    efni = request.forms.efni_breytapost
+    id = request.forms.id
+
+    db = database("tsuts.tskoli.is", "2109013290", "mypassword", "2109013290_blog")
+    
+    db.executeSQL("UPDATE POSTS SET TITILL = '"+str(fyrirsogn)+"', TEXTI = '"+str(efni)+"' WHERE ID = "+str(id))
+
     return redirect("/blog/postur?id="+str(id))
 
 
